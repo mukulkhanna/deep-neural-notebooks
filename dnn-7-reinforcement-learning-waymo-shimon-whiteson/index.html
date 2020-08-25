@@ -8,21 +8,72 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preload" href="../assets/css/app.css?v=46f72a838a" as="style">
+    <link rel="preload" href="../assets/js/manifest.js?v=46f72a838a" as="script">
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js?v=46f72a838a" as="script">
+    <link rel="preload" href="../assets/js/vendor.js?v=46f72a838a" as="script">
+    <link rel="preload" href="../assets/js/app.js?v=46f72a838a" as="script">
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css?v=46f72a838a" as="style">
+  <link rel="preload" href="../assets/js/post.js?v=46f72a838a" as="script">
+
+
     <style>
-      /* This font-face is here to make icons work if the Ghost instance is installed in a subdirectory */
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff2?v=46f72a838a") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff?v=46f72a838a") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff2?v=46f72a838a") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff?v=46f72a838a") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff2?v=46f72a838a") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff?v=46f72a838a") format('woff');
+      }
+
+      /* iconmoon */
       @font-face {
         font-family: 'icomoon';
-        src: url("../assets/fonts/icomoon.eot?vukg2s?v=f3dde84de5");
-        src: url("../assets/fonts/icomoon.eot?vukg2s") format('embedded-opentype'),
-        url("../assets/fonts/icomoon.ttf?vukg2s?v=f3dde84de5") format('truetype'),
-        url("../assets/fonts/icomoon.woff?vukg2s?v=f3dde84de5") format('woff'),
-        url("../assets/fonts/icomoon.svg?vukg2s") format('svg');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo?v=46f72a838a");
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf?aoz2mo?v=46f72a838a") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff?aoz2mo?v=46f72a838a") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg?aoz2mo") format('svg');
       }
     </style>
-    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=f3dde84de5" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=46f72a838a" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css?v=46f72a838a" media="screen">
+
 
       <style>
     .m-hero__picture {
@@ -129,37 +180,23 @@
       const ghostHost = "http://localhost:2368"
       // @license-end
     </script>
-
-    <script>
-      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
-      WebFontConfig = {
-        google: { families: ['Source+Sans+Pro:400,600,700&display=swap'] }
-      };
-
-      (function (d) {
-        var wf = d.createElement('script'), s = d.scripts[0];
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-        wf.async = true;
-        s.parentNode.insertBefore(wf, s);
-      })(document);
-      // @license-end
-    </script>
   </head>
   <body class="post-template tag-reinforcement-learning">
     
 
-<div class="main-wrap">
-    
+
+
+  
 <header class="m-header with-picture js-header">
   <div class="m-mobile-topbar" data-aos="fade-down">
     <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
-      <span class="icon-menu"></span>
+      <span class="icon-menu" aria-hidden="true"></span>
     </button>
       <a href="../index.html" class="m-logo in-mobile-topbar">
         <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
       </a>
     <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
-      <span class="icon-search"></span>
+      <span class="icon-search" aria-hidden="true"></span>
     </button>
   </div>
 
@@ -169,28 +206,28 @@
     </button>
     <div class="m-menu__main" data-aos="fade-down">
       <div class="l-wrapper">
-        <div class="m-nav">
-          <nav class="m-nav__left">
-            <ul role="submenu">
-                <li class="only-desktop" role="menuitem">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
                   <a href="../index.html" class="m-logo">
                     <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
                   </a>
                 </li>
                 
-    <li class="nav-deep-neural-notebooks" role="menuitem">
+    <li class="nav-deep-neural-notebooks">
       <a href="../index.html">Deep Neural Notebooks</a>
     </li>
-    <li class="nav-youtube" role="menuitem">
+    <li class="nav-youtube">
       <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg">Youtube</a>
     </li>
-    <li class="nav-about" role="menuitem">
+    <li class="nav-about">
       <a href="../about/index.html">About</a>
     </li>
 
-              <li role="menuitem" class="js-submenu-option">
-                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Toggle submenu">
-                  <span class="icon-more"></span>
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
                 </button>
                 <div class="m-submenu js-submenu">
                   <div class="l-wrapper in-submenu">
@@ -207,7 +244,7 @@
                                     <h3 class="m-recent-article__title js-recent-article-title" title="DNN 9: Computer Vision &amp; ML Inside The Car, NVIDIA's AI Co-Pilot // Shalini De Mello">
                                       DNN 9: Computer Vision &amp; ML Inside The Car, NVIDIA's AI Co-Pilot // Shalini De Mello
                                     </h3>
-                                    <span class="m-recent-article__date">6 days ago</span>
+                                    <span class="m-recent-article__date">a month ago</span>
                                   </a>
                                 </div>
                                 <div class="glide__slide">
@@ -218,7 +255,7 @@
                                     <h3 class="m-recent-article__title js-recent-article-title" title="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
                                       DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani
                                     </h3>
-                                    <span class="m-recent-article__date">a month ago</span>
+                                    <span class="m-recent-article__date">3 months ago</span>
                                   </a>
                                 </div>
                                 <div class="glide__slide">
@@ -229,7 +266,7 @@
                                     <h3 class="m-recent-article__title js-recent-article-title" title="DNN 7: Reinforcement Learning, Waymo // Shimon Whiteson">
                                       DNN 7: Reinforcement Learning, Waymo // Shimon Whiteson
                                     </h3>
-                                    <span class="m-recent-article__date">2 months ago</span>
+                                    <span class="m-recent-article__date">3 months ago</span>
                                   </a>
                                 </div>
                                 <div class="glide__slide">
@@ -240,7 +277,7 @@
                                     <h3 class="m-recent-article__title js-recent-article-title" title="DNN 6: Spirituality, Music &amp; The Bhagavad Gita // Srinivas Reddy">
                                       DNN 6: Spirituality, Music &amp; The Bhagavad Gita // Srinivas Reddy
                                     </h3>
-                                    <span class="m-recent-article__date">3 months ago</span>
+                                    <span class="m-recent-article__date">4 months ago</span>
                                   </a>
                                 </div>
                               </div>
@@ -289,11 +326,17 @@
           </nav>
           <div class="m-nav__right">
             <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
-              <span class="icon-search"></span>
+              <span class="icon-search" aria-hidden="true"></span>
             </button>
-            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode">
-              <input type="checkbox" class="js-toggle-darkmode">
-              <div></div>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -302,120 +345,131 @@
   </div>
 
 </header>
+
+<main class="main-wrap">
     
 
   <section class="m-hero with-picture" data-aos="fade">
     <div class="m-hero__picture in-post"></div>
     </section>
   
-  <main>
-    <article>
-      <div class="l-content in-post">
-          <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
-            <div class="l-post-content   js-progress-content">
-              <header class="m-heading">
-                <h1 class="m-heading__title in-post">DNN 7: Reinforcement Learning, Waymo // Shimon Whiteson</h1>
-                <div class="m-heading__meta">
-                    <a href="../tag/reinforcement-learning/index.html" class="m-heading__meta__tag">Reinforcement Learning</a>
-                    <span class="m-heading__meta__divider">•</span>
-                  <span class="m-heading__meta__time">May 28, 2020</span>
-                </div>
-              </header>
-              <div class="pos-relative js-post-content">
-                <div class="m-share">
-                  <div class="m-share__content js-sticky">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/dnn-7-reinforcement-learning-waymo-shimon-whiteson/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
-                      <span class="icon-facebook"></span>
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?text=DNN%207%3A%20Reinforcement%20Learning%2C%20Waymo%20%2F%2F%20Shimon%20Whiteson&amp;url=http://localhost:2368/dnn-7-reinforcement-learning-waymo-shimon-whiteson/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
-                      <span class="icon-twitter"></span>
-                    </a>
-                    <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
-                      <span class="icon-arrow-top"></span>
-                      <svg>
-                        <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <figure class="kg-card kg-embed-card"><iframe width="100%" height="232" allowtransparency="true" frameborder="0" allow="encrypted-media" title="Spotify Embed: DNN 7: Reinforcement Learning | Research at Waymo, University of Oxford | Shimon Whiteson" src="https://open.spotify.com/embed-podcast/episode/3936aEvSwsIhfwQfURmDb9"></iframe></figure><p>In the seventh episode of Deep Neural Notebooks, I interview Shimon Whiteson.</p><p>Shimon is a Computer Science Professor at the University of Oxford, where he leads the Whiteson Research Lab. He is also a Data Scientist at Waymo (formerly the Google Self Driving Car Project). His research specialises in Reinforcement Learning (RL), Cooperative Multi-Agent RL, to be precise.</p><p>So this interview is all in the context of Reinforcement Learning. We talk about his journey - how he started with Machine Learning &amp; RL. I ask him about his thoughts on the state of RL - about how the field has progressed and changed since he started, about how it has become so popular in the last few years, and about the challenges being faced.</p><p>We also talk about his research at Waymo, about recent projects from his lab, and about the scope and future of telepresence robots, one of which was developed under his guidance. We also talk about the infamous Reward Hypothesis in the context of RL and Philosophy. In the end, he also shares some advice for people starting out with RL.</p><!--kg-card-begin: markdown--><p>Links: <a href="https://www.youtube.com/watch?v=bbrYZDgPI9M">Youtube</a> / <a href="https://anchor.fm/deep-neural-notebooks/episodes/DNN-7-Reinforcement-Learning--Research-at-Waymo--University-of-Oxford--Shimon-Whiteson-eem6ef">Anchor.fm</a> / <a href="https://podcasts.apple.com/in/podcast/deep-neural-notebooks/id1488705711?i=1000476058716">Apple Podcasts</a> / <a href="https://open.spotify.com/episode/3936aEvSwsIhfwQfURmDb9">Spotify</a></p>
-<!--kg-card-end: markdown-->
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
+          <div class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">DNN 7: Reinforcement Learning, Waymo // Shimon Whiteson</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/reinforcement-learning/index.html" class="m-heading__meta__tag">Reinforcement Learning</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">•</span>
+                <span class="m-heading__meta__time">May 28, 2020</span>
               </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/dnn-7-reinforcement-learning-waymo-shimon-whiteson/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=DNN%207%3A%20Reinforcement%20Learning%2C%20Waymo%20%2F%2F%20Shimon%20Whiteson&amp;url=http://localhost:2368/dnn-7-reinforcement-learning-waymo-shimon-whiteson/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-embed-card"><iframe width="100%" height="232" allowtransparency="true" frameborder="0" allow="encrypted-media" title="Spotify Embed: DNN 7: Reinforcement Learning | Research at Waymo, University of Oxford | Shimon Whiteson" src="https://open.spotify.com/embed-podcast/episode/3936aEvSwsIhfwQfURmDb9"></iframe></figure><p>In the seventh episode of Deep Neural Notebooks, I interview Shimon Whiteson.</p><p>Shimon is a Computer Science Professor at the University of Oxford, where he leads the Whiteson Research Lab. He is also a Data Scientist at Waymo (formerly the Google Self Driving Car Project). His research specialises in Reinforcement Learning (RL), Cooperative Multi-Agent RL, to be precise.</p><p>So this interview is all in the context of Reinforcement Learning. We talk about his journey - how he started with Machine Learning &amp; RL. I ask him about his thoughts on the state of RL - about how the field has progressed and changed since he started, about how it has become so popular in the last few years, and about the challenges being faced.</p><p>We also talk about his research at Waymo, about recent projects from his lab, and about the scope and future of telepresence robots, one of which was developed under his guidance. We also talk about the infamous Reward Hypothesis in the context of RL and Philosophy. In the end, he also shares some advice for people starting out with RL.</p><!--kg-card-begin: markdown--><p>Links: <a href="https://www.youtube.com/watch?v=bbrYZDgPI9M">Youtube</a> / <a href="https://anchor.fm/deep-neural-notebooks/episodes/DNN-7-Reinforcement-Learning--Research-at-Waymo--University-of-Oxford--Shimon-Whiteson-eem6ef">Anchor.fm</a> / <a href="https://podcasts.apple.com/in/podcast/deep-neural-notebooks/id1488705711?i=1000476058716">Apple Podcasts</a> / <a href="https://open.spotify.com/episode/3936aEvSwsIhfwQfURmDb9">Spotify</a></p>
+<!--kg-card-end: markdown-->
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/reinforcement-learning/index.html" title="Reinforcement Learning">Reinforcement Learning</a>
+                      </li>
+                  </ul>
+                </section>
             </div>
           </div>
-          <section class="m-author">
-            <div class="m-author__content">
-              <div class="m-author__picture">
-                <a href="../author/mukul/index.html" class="m-author-picture" aria-label="Author picture">
-                    <div style="background-image: url(../content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG);"></div>
-                </a>
-              </div>
-              <div class="m-author__info">
-                <h4 class="m-author__name">
-                  <a href="../author/mukul/index.html">Mukul Khanna</a>
-                </h4>
-                  <p class="m-author__bio">Computer Vision Research Intern at Robotics Research Center, IIIT Hyderabad</p>
-                <ul class="m-author-links">
-                    <li>
-                      <a href="http://mukulkhanna.co" target="_blank" rel="noopener" aria-label="Website">
-                        <span class="icon-globe"></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://twitter.com/@mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
-                        <span class="icon-twitter"></span>
-                      </a>
-                    </li>
-                </ul>
-              </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/mukul/index.html" class="m-author-picture" aria-label="Mukul Khanna">
+                  <div style="background-image: url(../content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG);"></div>
+              </a>
             </div>
-          </section>
-          <section class="m-recommended">
-            <div class="l-wrapper in-recommended">
-              <h3 class="m-section-title in-recommended">Recommended for you</h3>
-              <div class="m-recommended-articles">
-                <div class="m-recommended-slider glide js-recommended-slider">
-                  <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides">
-                      
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/mukul/index.html">Mukul Khanna</a>
+              </h4>
+                <p class="m-author__bio">Computer Vision Research Intern at Robotics Research Center, IIIT Hyderabad</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="http://mukulkhanna.co" target="_blank" rel="noopener" aria-label="Website">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/@mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
+                      <span class="icon-twitter" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="m-recommended">
+          <div class="l-wrapper in-recommended">
+            <h3 class="m-section-title in-recommended">Recommended for you</h3>
+            <div class="m-recommended-articles">
+              <div class="m-recommended-slider glide js-recommended-slider">
+                <div class="glide__track" data-glide-el="track">
+                  <div class="glide__slides">
+                    
     <header class="m-heading no-margin">
       <h3>No posts found</h3>
       <p>
         Apparently there are no posts at the moment, check again later.
       </p>
     </header>
-                    </div>
                   </div>
-                  <div data-glide-el="controls" class="glide__arrows js-controls">
-                    <button data-glide-dir="&lt;" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
-                      <span class="icon-arrow-left" aria-hidden="true"></span>
-                    </button>
-                    <button data-glide-dir="&gt;" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
-                      <span class="icon-arrow-right" aria-hidden="true"></span>
-                    </button>
-                  </div>
+                </div>
+                <div data-glide-el="controls" class="glide__arrows js-controls">
+                  <button data-glide-dir="&lt;" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                    <span class="icon-arrow-left" aria-hidden="true"></span>
+                  </button>
+                  <button data-glide-dir="&gt;" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                    <span class="icon-arrow-right" aria-hidden="true"></span>
+                  </button>
                 </div>
               </div>
             </div>
-          </section>
-      </div>
-    </article>
-  </main>
-</div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
 
 
 
     
-<div class="m-search js-search">
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
   <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
-    <span class="icon-close"></span>
+    <span class="icon-close" aria-hidden="true"></span>
   </button>
   <div class="m-search__content">
     <form class="m-search__form">
-      <fieldset>
-        <span class="icon-search m-search-icon"></span>
-        <input type="text" class="m-input in-search js-input-search" placeholder="Type to search" aria-label="Type to search">
-      </fieldset>
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
     </form>
     <div class="js-search-results hide"></div>
     <p class="m-not-found align-center hide js-no-results">
@@ -430,17 +484,20 @@
     <p class="m-footer-copyright">
       <span>Deep Neural Notebooks © 2020</span>
       <span>  •  </span>
-      <span>Published w <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
     </p>
 
     <nav class="m-footer-social">
         <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
-          <span class="icon-twitter"></span>
+          <span class="icon-twitter" aria-hidden="true"></span>
         </a>
-        <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg" target="_blank" rel="noopener" aria-label="Youtube">
-            <span class="icon-youtube"></span>
-          </a>
+      <a href="http://localhost:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
     </nav>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html?v=46f72a838a" rel="jslicense">JavaScript license information</a>
+    </p>
   </div>
 </footer>
 
@@ -472,12 +529,12 @@
   </button>
 </div>
     <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
-    <script defer src="../assets/js/vendor/content-api.min.js?v=f3dde84de5"></script>
-    <script defer src="../assets/js/manifest.js?v=f3dde84de5"></script>
-    <script defer src="../assets/js/vendor.js?v=f3dde84de5"></script>
-    <script defer src="../assets/js/app.js?v=f3dde84de5"></script>
+    <script defer src="../assets/js/manifest.js?v=46f72a838a"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js?v=46f72a838a"></script>
+    <script defer src="../assets/js/vendor.js?v=46f72a838a"></script>
+    <script defer src="../assets/js/app.js?v=46f72a838a"></script>
 
-      <script defer src="../assets/js/post.js?v=f3dde84de5"></script>
+      <script defer src="../assets/js/post.js?v=46f72a838a"></script>
 
 
     
