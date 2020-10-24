@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Newsletter</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="assets/css/app.css?v=ede4a4270a" as="style">
+    <link rel="preload" href="assets/js/manifest.js?v=ede4a4270a" as="script">
+    <link rel="preload" href="assets/js/vendor/content-api.min.js?v=ede4a4270a" as="script">
+    <link rel="preload" href="assets/js/vendor.js?v=ede4a4270a" as="script">
+    <link rel="preload" href="assets/js/app.js?v=ede4a4270a" as="script">
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+    
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("assets/fonts/source-sans-pro/source-sans-pro-regular.woff2?v=ede4a4270a") format('woff2'),
+            url("assets/fonts/source-sans-pro/source-sans-pro-regular.woff?v=ede4a4270a") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("assets/fonts/source-sans-pro/source-sans-pro-600.woff2?v=ede4a4270a") format('woff2'),
+            url("assets/fonts/source-sans-pro/source-sans-pro-600.woff?v=ede4a4270a") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("assets/fonts/source-sans-pro/source-sans-pro-700.woff2?v=ede4a4270a") format('woff2'),
+            url("assets/fonts/source-sans-pro/source-sans-pro-700.woff?v=ede4a4270a") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("assets/fonts/icomoon/icomoon.eot?aoz2mo?v=ede4a4270a");
+        src: url("assets/fonts/icomoon/icomoon.eot?aoz2mo") format('embedded-opentype'),
+        url("assets/fonts/icomoon/icomoon.ttf?aoz2mo?v=ede4a4270a") format('truetype'),
+        url("assets/fonts/icomoon/icomoon.woff?aoz2mo?v=ede4a4270a") format('woff'),
+        url("assets/fonts/icomoon/icomoon.svg?aoz2mo") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css?v=ede4a4270a" media="screen">
+
+      <link rel="preload" href="assets/css/newsletter.css?v=ede4a4270a" as="style">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/newsletter.css?v=ede4a4270a" media="screen">
+
+
+    
+
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="canonical" href="newsletter.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Newsletter">
+    <meta property="og:description" content="Research, Insights &amp; Stories">
+    <meta property="og:url" content="http://localhost:2368/newsletter/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Newsletter">
+    <meta name="twitter:description" content="Research, Insights &amp; Stories">
+    <meta name="twitter:url" content="http://localhost:2368/newsletter/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "Newsletter",
+    "url": "http://localhost:2368/newsletter/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <script defer src="public/members.min.js?v=ede4a4270a"></script>
+    <meta name="generator" content="Ghost 3.21">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="rss/index.html">
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="page-template page-newsletter">
+    
+
+
+<main>
+  <div class="l-wrapper" data-aos="fade-down">
+    <a href="index.html" class="m-back">
+      <span class="m-back__icon icon-arrow-left"></span>
+      <span>Back to home</span>
+    </a>
+  </div>
+  
+  <div class="l-fullscreen">
+    <section class="l-fullscreen__content in-subscribe-page" data-aos="fade-up" data-aos-delay="300">
+      <div>
+        <header class="m-heading in-subscribe-page">
+          <h1 class="m-heading__title">Subscribe to Deep Neural Notebooks</h1>
+          <p class="m-heading__description in-subscribe-page">
+            Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox.
+          </p>
+        </header>
+        
+<div class="m-subscribe-section__form">
+  <form data-members-form="subscribe" id="newsletter-form" class="m-subscribe-section__container">
+    <div class="m-subscribe__form">
+      <div class="pos-relative">
+        <label for="newsletter-input" class="sr-only">Your email address</label>
+        <input data-members-email id="newsletter-input" class="m-input in-subscribe-section" type="email" placeholder="Your email address" required>
+      </div>
+      <button id="newsletter-button" class="m-button primary block" type="submit">Subscribe</button>
+    </div>
+    <div class="m-subscribe__success">
+      <header class="m-heading no-margin">
+        <img src="assets/images/success.png?v=ede4a4270a" alt="Success!" class="m-subscribe__success_icon">
+        <p class="m-heading__description in-newsletter-form">
+          Now check your inbox and click the link to confirm your subscription.
+        </p>
+      </header>
+    </div>
+    <p class="m-subscribe__invalid m-small-text">
+      Please enter a valid email address
+    </p>
+    <p class="m-subscribe__error m-small-text">
+      Oops! There was an error sending the email, please try later.
+    </p>
+  </form>
+</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <p class="m-footer-copyright">
+      <span>Mukul Khanna © 2020</span>
+      <span>  •  </span>
+      <span>Published w/ <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+
+    <nav class="m-footer-social">
+        <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg" target="_blank" rel="noopener" aria-label="Youtube">
+          <span class="icon-youtube" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://localhost:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You've successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You've successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="assets/js/manifest.js?v=ede4a4270a"></script>
+    <script defer src="assets/js/vendor/content-api.min.js?v=ede4a4270a"></script>
+    <script defer src="assets/js/vendor.js?v=ede4a4270a"></script>
+    <script defer src="assets/js/app.js?v=ede4a4270a"></script>
+
+    
+
+    
+  </body>
+</html>
