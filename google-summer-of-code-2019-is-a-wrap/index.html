@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Google Summer of Code 2019 is a wrap!</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="../assets/css/app.css?v=3200ab924b" as="style">
+    <link rel="preload" href="../assets/js/manifest.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/vendor.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/app.js?v=3200ab924b" as="script">
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css?v=3200ab924b" as="style">
+  <link rel="preload" href="../assets/js/post.js?v=3200ab924b" as="script">
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff?v=3200ab924b") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff?v=3200ab924b") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff?v=3200ab924b") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo?v=3200ab924b");
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf?aoz2mo?v=3200ab924b") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff?aoz2mo?v=3200ab924b") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg?aoz2mo") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=3200ab924b" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css?v=3200ab924b" media="screen">
+
+
+    
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Google Summer of Code 2019 is a wrap!">
+    <meta property="og:description" content="This summer, my proposal got selected by Open Source Robotics Foundation for Google Summer of Code 2019. It was an awesome learning experience! Open Source Robotics FoundationOpen Source Robotics Foundation (OSRF), or Open Robotics is an independent non-profit organisation that works on open software and hardware for use in robotics.">
+    <meta property="og:url" content="http://localhost:2368/google-summer-of-code-2019-is-a-wrap/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/10/Screenshot-2020-10-24-at-10.04.23-AM.png">
+    <meta property="article:published_time" content="2019-10-29T04:30:00.000Z">
+    <meta property="article:modified_time" content="2020-10-24T04:35:17.000Z">
+    <meta property="article:tag" content="GSOC">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Google Summer of Code 2019 is a wrap!">
+    <meta name="twitter:description" content="This summer, my proposal got selected by Open Source Robotics Foundation for Google Summer of Code 2019. It was an awesome learning experience! Open Source Robotics FoundationOpen Source Robotics Foundation (OSRF), or Open Robotics is an independent non-profit organisation that works on open software and hardware for use in robotics.">
+    <meta name="twitter:url" content="http://localhost:2368/google-summer-of-code-2019-is-a-wrap/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/10/Screenshot-2020-10-24-at-10.04.23-AM.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="GSOC">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    <meta property="og:image:width" content="1440">
+    <meta property="og:image:height" content="809">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "url": "http://localhost:2368/author/mukul/",
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "Google Summer of Code 2019 is a wrap!",
+    "url": "http://localhost:2368/google-summer-of-code-2019-is-a-wrap/",
+    "datePublished": "2019-10-29T04:30:00.000Z",
+    "dateModified": "2020-10-24T04:35:17.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/10/Screenshot-2020-10-24-at-10.04.23-AM.png",
+        "width": 1440,
+        "height": 809
+    },
+    "keywords": "GSOC",
+    "description": "This summer, my proposal got selected by Open Source Robotics Foundation\n[https://www.openrobotics.org] for Google Summer of Code 2019. It was an awesome\nlearning experience!\n\nOpen Source Robotics Foundation\nOpen Source Robotics Foundation (OSRF), or Open Robotics is an independent\nnon-profit organisation that works on open software and hardware for use in\nrobotics. Their two open-source software projects —ROS [http://ros.org/] and \nGazebo [http://gazebosim.org] are the most commonly adopted fra",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.21">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../rss/index.html">
+    <script>
+  const ghostSearchApiKey = 'efff2b0d00118a51535099c413'
+</script>
+
+<!-- prism.js -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css">
+
+<style>
+  pre[class*="language-"] {
+    margin: 0 0 1.5em !important;
+  }
+  code {
+    text-shadow: none !important;
+  }
+  .token.operator {
+    background: none !important;
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #20262E !important;
+  }
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-gsoc">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
+                  </a>
+                </li>
+                
+    <li class="nav-mukul-khanna">
+      <a href="../about/index.html">mukul khanna</a>
+    </li>
+    <li class="nav-podcast">
+      <a href="../index.html">podcast</a>
+    </li>
+    <li class="nav-blog">
+      <a href="../author/mukul/index.html">blog</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../deep-neural-notebooks-podcast/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Screenshot-2020-10-24-at-7.59.26-AM.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Deep Neural Notebooks: About the Podcast">
+                                      Deep Neural Notebooks: About the Podcast
+                                    </h3>
+                                    <span class="m-recent-article__date">4 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-10-practical-natural-language-processing-book-nlp-ml-ai-in-the-industry-gpt-3-and-mor/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/09/Podcast-thumbnails.002.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more">
+                                      DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-9-computer-vision-machine-learning-inside-the-car/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Podcast-thumbnails-2.009.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 9: NVIDIA's AI Co-Pilot , Computer Vision &amp; ML Inside The Car // Shalini De Mello">
+                                      DNN 9: NVIDIA's AI Co-Pilot , Computer Vision &amp; ML Inside The Car // Shalini De Mello
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-8/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Podcast-thumbnails-2.008.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
+                                      DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani
+                                    </h3>
+                                    <span class="m-recent-article__date">5 months ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/art/index.html">Art</a>
+                            </li>
+                            <li>
+                              <a href="../tag/book/index.html">Book</a>
+                            </li>
+                            <li>
+                              <a href="../tag/chatbots/index.html">Chatbots</a>
+                            </li>
+                            <li>
+                              <a href="../tag/computer-vision/index.html">Computer Vision</a>
+                            </li>
+                            <li>
+                              <a href="../tag/creativity/index.html">Creativity</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-science/index.html">Data Science</a>
+                            </li>
+                            <li>
+                              <a href="../tag/deep-learning/index.html">Deep Learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/gsoc/index.html">GSOC</a>
+                            </li>
+                            <li>
+                              <a href="../tag/hdr/index.html">HDR</a>
+                            </li>
+                            <li>
+                              <a href="../tag/human-computer-interaction/index.html">Human Computer Interaction</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap" style="margin-top:4%">
+    
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
+          <div class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Google Summer of Code 2019 is a wrap!</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/gsoc/index.html" class="m-heading__meta__tag">GSOC</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">•</span>
+                <span class="m-heading__meta__time">Oct 29, 2019</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.youtube.com/playlist?list=PLKsk3K4Z-1AVwIzEi9pk-ayEh9uxdyweL" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Youtube">
+                    <span class="icon-youtube" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://open.spotify.com/show/2eq1jD7V5K19aZUUJnIz5z" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Spotify">
+                    <span class="icon-spotify" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card kg-width-wide"><img src="https://cdn-images-1.medium.com/max/1200/1*5zndHrmiMesUwi3U5zU0sA.jpeg" class="kg-image" alt></figure><p>This summer, my proposal got selected by <a href="https://www.openrobotics.org" rel="noopener">Open Source Robotics Foundation</a> for Google Summer of Code 2019. It was an awesome learning experience!</p><h3 id="open-source-robotics-foundation">Open Source Robotics Foundation</h3><p>Open Source Robotics Foundation (OSRF), or Open Robotics is an independent non-profit organisation that works on open software and hardware for use in robotics. Their two open-source software projects — <a href="http://ros.org/" rel="noopener">ROS</a> and <a href="http://gazebosim.org" rel="noopener">Gazebo</a> are the most commonly adopted frameworks for developing robots and their simulations. ROS and Gazebo have done wonders for the robotics community, driving academic research and product development in robotics all over the world. Open Robotics offers consultance, R&amp;D help, open source software services and custom engineering for robotics to industry and government.</p><h3 id="my-project">My project</h3><p>My GSoC proposal was for the <strong>Gazebo Documentation Index </strong>project. It was mentored by the best, <a href="https://twitter.com/_jrivero_?lang=en" rel="noopener">Jose Luis Rivero</a>, who is a Software Engineer at OSRF. My proposal can be accessed <a href="https://summerofcode.withgoogle.com/serve/6486525154426880/" rel="noopener">here</a>. The documentation index that I developed can be accessed <a href="https://osrf.github.io/gazebo-doc-index/" rel="noopener">here</a> and the corresponding Github repo can be found <a href="https://github.com/osrf/gazebo-doc-index" rel="noopener">here</a>.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*oaBA-IXejsAtwl1W.jpg" class="kg-image" alt></figure><p><a href="http://gazebosim.org" rel="noopener"><strong>Gazebo</strong></a> is an open source software built and maintained by OSRF to accelerate research and development using robotic simulations that make it easy to test and validate algorithmic implementations in real-time on robots in simulated environments, without having to deploy actual physical vehicles every time. This helps in reducing costs, resources and time.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*JGB4YJOsl8GWm98q.gif" class="kg-image" alt><figcaption>ATLAS walking in Gazebo in real time</figcaption></figure><p>At present, the learning resources for Gazebo are distributed over the internet — the official documentation, the Q&amp;A website and ROS-Answers. Some noteworthy help can also be found through examples and explanations in the comments of Bitbucket issues (Gazebo’s repo) and Gazebo’s API. There are also third-party sources that provide video tutorials and blog posts that are helpful in learning Gazebo. All of this information is distributed across the internet with some links joining each other.</p><p>It can be a bit overwhelming to keep track of one’s learning when the content is distributed as in this case.</p><p>The aim of this project was to bring all the learning material under one webpage in the form of a documentation index that contains links to the content where the respective information is hosted.</p><p>A documentation index is a platform where links to relevant learning resources for a software system are indexed to allow users to find any help at one place.</p><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Index" rel="noopener">HTML</a>, <a href="https://www.intel.com/content/www/us/en/programmable/documentation/lit-index.html" rel="noopener">Intel</a> and <a href="https://www.oracle.com/technetwork/indexes/documentation/index-100966.html" rel="noopener">Oracle</a>, among many others have such doc indexes in place.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*C8qPqdXlCZk-yUSl6zOc4A.png" class="kg-image" alt><figcaption>HTML’s documentation index</figcaption></figure><p>A documentation index is a neat way to accommodate links to all the relevant learning content into one webpage. It is very convenient since almost any help is just a page quicksearch away. The user can think of related keywords or categories and then look through the index to find the relevant information. Such a platform can act as a one-stop place to get all relevant information about Gazebo.</p><ol><li>Compilation of best learning resources from across the internet, including tutorials, third-party blog posts, Bitbucket issues’ comments and the Gazebo answers website.</li><li>All relevant content under one roof.</li></ol><p>My GSoC project was to build such a documentation index for Gazebo.</p><h3 id="proposed-timeline">Proposed timeline</h3><p>The following is the timeline I presented in my proposal -</p><ol><li>Discussion with the mentees about the frontend and backend framework to be used along with the data format in which the index links will be stored.</li><li>Accumulating the data for the index’s links of where the relevant information is hosted and finalising the structuring of data across the chosen data format files.</li><li>Making index data files available for collaborative maintenance along with rules and recommendations for any contributions to the documentation index in the form of pull requests.</li><li>Simultaneously, developing a prototype that can work with limited number of links.</li><li>Writing test cases to validate the webpage requirements.</li><li>A demo to the mentees and other relevant people in the organisation followed by discussion about areas of improvement in terms of performance and design.</li><li>Working on final version and completion within a stipulated time period.</li><li>After a demo to the mentees, if the implementation is successful, discussion on build and deployment pipelines.</li><li>CI (Continuous Integration) can be set up with Travis CI for automated testing and code building.</li><li>After all the aforementioned requirements are satisfied, the website can be put into production.</li></ol><h3 id="getting-started">Getting started</h3><p>As a part of my proposal for GSoC, I was asked to complete and submit a task that can speak for my experience with web development and a basic understanding of Gazebo. Creating a minimal stub of the doc index website was one of these tasks. My mentor had prepared a basic design for a couple of webpages that I was supposed to emulate.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*RvTYuC_JMAZ1hfxdRXQNiQ.png" class="kg-image" alt><figcaption>Minimal stub</figcaption></figure><h3 id="choosing-the-stack">Choosing the stack</h3><p>It was during developing these pages that I started thinking about how I could implement the documentation index in a way that it is easy to build, easy to maintain (adding, removing and updating index entries by open-source collaboration), light-weight and fast.</p><p>My preferred tool-kit for building websites was a Vuejs frontend + a Python (Flask) or Nodejs (Expressjs) backend + Heroku for serving a PostgresQL DB and for deployment.</p><p>But this had to be approached differently.</p><p>For example, the doc index would have had been difficult to maintain if the index entries were going to be stored in a conventional database, requiring a lot of pipeline setup, sync issues and making it difficult for any Gazebo developer who wishes to contribute because of requirement of pre-requisite knowledge of the stack.</p><p>Also, I realised that the website would only require two (or three) major template pages, so going for a comprehensive front-end framework would have been overkill.</p><p>I was looking for a more integrated approach (Oh, Steve Jobs would have been so happy to hear that), that would be easier to maintain.</p><p><a href="https://jekyllrb.com" rel="noopener">Jekyll</a> had everything I was looking for. With it’s Static Site Rendering (SSR), templating engines and easy data management using YAML-based frontmatter in Markdown files, Jekyll was the perfect choicde.</p><p>The best thing about Jekyll was how the data of the doc index could reside in these adorable Markdown files that were easy to maintain and collaborate on using Github PRs. This helped in eliminating the requirement of a backend server and a database. Because of Github Pages support for Jekyll, hosting also wasn’t an issue anymore.</p><p>I developed the prototype using Jekyll and after the project started, I discussed the advantages of using Jekyll with my mentor, who agreed that this was the way to go. Some important index entries, that my mentor had listed, were added to the website.</p><h3 id="structuring-the-doc-index">Structuring the doc index</h3><p>The next step was to decide how to structure the doc index in a way that it was easy to scale and again, easy to maintain. We came up with a structure that is two levels deep, classified into categories and subcategories. The first level of abstraction is the category level and the second level is the subcategory level.</p><p><code>Category &gt;&gt; Subcategory &gt;&gt; Index entries</code></p><ul><li>Each category comprises of subcategories and each subcategory comprises of the corresponding index items.</li><li>Each category and index item also contain a brief description of the same.</li><li>More important index items can be shown starred.</li></ul><p>This hierarchical classification, as shown below has complied well with the requirements of the project.</p><pre><code>- category 1    - subcategory 1        - item 1         - item 2</code></pre><pre><code>- subcategory 2        - item 1         - item 2</code></pre><pre><code>- category 2 - category 3</code></pre><h4 id="all-links-page">All links page</h4><p>To allow for the user to be able to find all relevant content on one webpage, an ‘All links’ page was also added. This can help users in finding any help using a browser quicksearch (Ctrl + F).</p><h3 id="testing">Testing</h3><p>Test cases had to be written to automate the procedure of verifying that everything worked fine after any update to the code (commits and PRs). The two primary things to test here are —</p><ul><li>Integrity of index data structure</li><li>Validity of external links in index items</li></ul><p>For the first part, I wrote a spec <a href="https://github.com/osrf/gazebo-doc-index/blob/5cd394bffd5ba35a61cf72512decc4cb0c5b1390/spec/index_integrity_spec.rb" rel="noopener">file</a> in Ruby that parses all the data files and expects the structure of the index data to be maintained. For testing validity of external links, we used the very common <a href="https://github.com/gjtorikian/html-proofer" rel="noopener">html-proofer</a> library that takes care of that.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*y78zn4NyN0E3KMpV.png" class="kg-image" alt><figcaption>Index integrity test</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*K1xbY4qY4KKhLkth.png" class="kg-image" alt><figcaption>HTMLproofer external link validity test</figcaption></figure><p>These test cases have been automated using Travis CI, that runs these tests for us every time there is a commit or a pull-request in the repo.</p><h3 id="user-interface">User interface</h3><p>For the user interface of the website, I made improvements to the minmal stub created by my mentor, trying to make it clean and minimal so that the prime focus was on the doc index entries.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*FZ3oCXILxTi7b4ZNI7MiFA.png" class="kg-image" alt><figcaption>Home page</figcaption></figure><p>For ease of collaboration, a ‘Suggest edits’ button was added that directly takes you to the Github editor using which any changes can be made to the index, and a PR can be opened.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*CO5Oe59bZf6OlfZOMcnsCw.png" class="kg-image" alt><figcaption>Category page</figcaption></figure><h3 id="alpha-launch">Alpha launch</h3><p>With this, we were able to launch the <strong>alpha version </strong>of the Gazebo Documentation Index, inviting developers and users to contribute to the growth of the platform. The alpha release announcement can be accessed <a href="https://community.gazebosim.org/t/gazebo-documentation-index-alpha-release/384" rel="noopener">here</a>.</p><h3 id="what-next">What next</h3><p>This provided us a decent setup to expand on and start finessing the doc index in terms of the data that it provides — the amount of documentation that it covers.</p><p>Other than suggestions from the community about the items that can be added to the doc index, we decided to develop a suggestions-tool — an application that can suggest index entries by scraping the issues on Gazebo’s Bitbucket repository. There is a lot of information in the issues and their comments that is not otherwise documented. These issues can also be a reminder of relevant topics that people are facing difficulties with.</p><p>The suggestions-tool can be accessed <a href="https://gazebo-index.herokuapp.com/" rel="noopener">here</a>.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*Mo3Utkhwrx2QuHW53wAS_g.png" class="kg-image" alt><figcaption>suggestions-tool</figcaption></figure><p>The suggestions-tool scrapes content from Bitbucket issues, performs NLP based keyword extraction and provides a list of keywords pertaining to each issue. These keywords help in getting a gist of the issue’s content. This information can be used to know whether the corresponding topics have been covered in the doc index. If yes, then these can be marked in the suggestions-tool to keep a track of the issues that have already been covered in the doc index.</p><p>After a careful evaluation of the requirements, the app was developed using Vuejs + Flask + PostgresQL (hosted on Heroku) + Heroku.</p><h3 id="future-work">Future work</h3><p>I had a great time working on this project. I will continue to work on this project at least until it gains popularity and reaches the self-sufficient state. The next step is to get more information about this out to the users, and to get people to refer to this in answers to questions on the community page or the Bitbucket issues page.</p><p>These are the very beginning days of the Documentation Index and it has serious potential to become an important documentation resource that brings together all the relevant learning material in one place,in an organised fashion, helping beginners and professionals save time and resources and find the right help immediately.</p>
+            </div>
+          </div>
+        </div>
+        <section class="m-recommended">
+          <div class="l-wrapper in-recommended">
+            <h3 class="m-section-title in-recommended"><b>Recommended for you</b></h3>
+            <div class="m-recommended-articles">
+              <div class="m-recommended-slider glide js-recommended-slider">
+                <div class="glide__track" data-glide-el="track">
+                  <div class="glide__slides">
+                    
+    <header class="m-heading no-margin">
+      <h3>No posts found</h3>
+      <p>
+        Apparently there are no posts at the moment, check again later.
+      </p>
+    </header>
+                  </div>
+                </div>
+                <div data-glide-el="controls" class="glide__arrows js-controls">
+                  <button data-glide-dir="&lt;" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                    <span class="icon-arrow-left" aria-hidden="true"></span>
+                  </button>
+                  <button data-glide-dir="&gt;" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                    <span class="icon-arrow-right" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <p class="m-footer-copyright">
+      <span>Mukul Khanna © 2020</span>
+      <span>  •  </span>
+      <span>Published w/ <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+
+    <nav class="m-footer-social">
+        <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg" target="_blank" rel="noopener" aria-label="Youtube">
+          <span class="icon-youtube" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://localhost:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You've successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You've successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/vendor.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/app.js?v=3200ab924b"></script>
+
+      <script defer src="../assets/js/post.js?v=3200ab924b"></script>
+
+
+    <!-- prism.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-javascript.min.js"></script>
+  </body>
+</html>

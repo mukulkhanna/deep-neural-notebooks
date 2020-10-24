@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019)</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="../assets/css/app.css?v=3200ab924b" as="style">
+    <link rel="preload" href="../assets/js/manifest.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/vendor.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/app.js?v=3200ab924b" as="script">
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css?v=3200ab924b" as="style">
+  <link rel="preload" href="../assets/js/post.js?v=3200ab924b" as="script">
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff?v=3200ab924b") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff?v=3200ab924b") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff?v=3200ab924b") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo?v=3200ab924b");
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf?aoz2mo?v=3200ab924b") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff?aoz2mo?v=3200ab924b") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg?aoz2mo") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=3200ab924b" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css?v=3200ab924b" media="screen">
+
+
+    
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019)">
+    <meta property="og:description" content="Source: Attention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet)“You just want attention, you don’t want my heart” — Charlie PuthAbout the paperAttention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet) is the current state-of-the-art in HDR image generation using bracketed exposure images. It was presented at CVPR 2019,">
+    <meta property="og:url" content="http://localhost:2368/attention-guided-network-for-ghost-free-high-dynamic-range-imaging-cvpr-2019-paper-review/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta property="article:published_time" content="2019-09-24T04:00:00.000Z">
+    <meta property="article:modified_time" content="2020-10-24T04:13:58.000Z">
+    <meta property="article:tag" content="Paper Review">
+    <meta property="article:tag" content="HDR">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019)">
+    <meta name="twitter:description" content="Source: Attention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet)“You just want attention, you don’t want my heart” — Charlie PuthAbout the paperAttention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet) is the current state-of-the-art in HDR image generation using bracketed exposure images. It was presented at CVPR 2019,">
+    <meta name="twitter:url" content="http://localhost:2368/attention-guided-network-for-ghost-free-high-dynamic-range-imaging-cvpr-2019-paper-review/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Paper Review, HDR">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="2800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "url": "http://localhost:2368/author/mukul/",
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019)",
+    "url": "http://localhost:2368/attention-guided-network-for-ghost-free-high-dynamic-range-imaging-cvpr-2019-paper-review/",
+    "datePublished": "2019-09-24T04:00:00.000Z",
+    "dateModified": "2020-10-24T04:13:58.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 2800
+    },
+    "keywords": "Paper Review, HDR",
+    "description": "Source: Attention-guided Network for Ghost-free High Dynamic Range Imaging\n(AHDRNet) [https://donggong1.github.io/ahdr]&gt; “You just want attention, you don’t\nwant my heart” — Charlie Puth\nAbout the paper\nAttention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet) is\nthe current state-of-the-art in HDR image generation using bracketed exposure\nimages. It was presented at CVPR 2019, and can be read here\n[https://arxiv.org/abs/1904.10293]. The primary author, Dong Gong\n[https://dong",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.21">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../rss/index.html">
+    <script>
+  const ghostSearchApiKey = 'efff2b0d00118a51535099c413'
+</script>
+
+<!-- prism.js -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css">
+
+<style>
+  pre[class*="language-"] {
+    margin: 0 0 1.5em !important;
+  }
+  code {
+    text-shadow: none !important;
+  }
+  .token.operator {
+    background: none !important;
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #20262E !important;
+  }
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-paper-review tag-hdr">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
+                  </a>
+                </li>
+                
+    <li class="nav-mukul-khanna">
+      <a href="../about/index.html">mukul khanna</a>
+    </li>
+    <li class="nav-podcast">
+      <a href="../index.html">podcast</a>
+    </li>
+    <li class="nav-blog">
+      <a href="../author/mukul/index.html">blog</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../deep-neural-notebooks-podcast/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Screenshot-2020-10-24-at-7.59.26-AM.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Deep Neural Notebooks: About the Podcast">
+                                      Deep Neural Notebooks: About the Podcast
+                                    </h3>
+                                    <span class="m-recent-article__date">4 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-10-practical-natural-language-processing-book-nlp-ml-ai-in-the-industry-gpt-3-and-mor/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/09/Podcast-thumbnails.002.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more">
+                                      DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-9-computer-vision-machine-learning-inside-the-car/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Podcast-thumbnails-2.009.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 9: NVIDIA's AI Co-Pilot , Computer Vision &amp; ML Inside The Car // Shalini De Mello">
+                                      DNN 9: NVIDIA's AI Co-Pilot , Computer Vision &amp; ML Inside The Car // Shalini De Mello
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-8/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Podcast-thumbnails-2.008.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
+                                      DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani
+                                    </h3>
+                                    <span class="m-recent-article__date">5 months ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/art/index.html">Art</a>
+                            </li>
+                            <li>
+                              <a href="../tag/book/index.html">Book</a>
+                            </li>
+                            <li>
+                              <a href="../tag/chatbots/index.html">Chatbots</a>
+                            </li>
+                            <li>
+                              <a href="../tag/computer-vision/index.html">Computer Vision</a>
+                            </li>
+                            <li>
+                              <a href="../tag/creativity/index.html">Creativity</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-science/index.html">Data Science</a>
+                            </li>
+                            <li>
+                              <a href="../tag/deep-learning/index.html">Deep Learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/gsoc/index.html">GSOC</a>
+                            </li>
+                            <li>
+                              <a href="../tag/hdr/index.html">HDR</a>
+                            </li>
+                            <li>
+                              <a href="../tag/human-computer-interaction/index.html">Human Computer Interaction</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap" style="margin-top:4%">
+    
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
+          <div class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019)</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/paper-review/index.html" class="m-heading__meta__tag">Paper Review</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">•</span>
+                <span class="m-heading__meta__time">Sep 24, 2019</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.youtube.com/playlist?list=PLKsk3K4Z-1AVwIzEi9pk-ayEh9uxdyweL" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Youtube">
+                    <span class="icon-youtube" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://open.spotify.com/show/2eq1jD7V5K19aZUUJnIz5z" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Spotify">
+                    <span class="icon-spotify" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/1200/0*XQTvMhuOvww-TJ8X.jpg" class="kg-image" alt><figcaption>Source: <a href="https://donggong1.github.io/ahdr" data-href="https://donggong1.github.io/ahdr" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">Attention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet)</a></figcaption></figure><blockquote><em>“You just want attention, you don’t want my heart” — Charlie Puth</em></blockquote><h3 id="about-the-paper">About the paper</h3><p><em>Attention-guided Network for Ghost-free High Dynamic Range Imaging</em> (AHDRNet) is the current state-of-the-art in HDR image generation using bracketed exposure images. It was presented at CVPR 2019, and can be read <a href="https://arxiv.org/abs/1904.10293" rel="noopener">here</a>. The primary author, <a href="https://donggong1.github.io/" rel="noopener">Dong Gong</a> is a Postdoctoral researcher at The University of Adelaide. His interests include machine learning and optimization in Computer Vision.</p><blockquote><strong><em>Note</em></strong><em>: Image results, network representations, formulas and tables used in this blog post have all been sourced from the </em><a href="https://arxiv.org/abs/1904.10293" rel="noopener"><em>paper</em></a><em>.</em></blockquote><h3 id="el-problema">El problema</h3><p>For generation of an HDR image from multi-exposure bracketed LDR images, alignment of the LDR images is very important for dynamic scenes with in-frame motion. Misalignments not accounted for before merging causing ghosting (among other) artifacts. There have been several successful (almost) attempts at compensating this motion between frames by using Optical flow estimation. As it turns out, the shortcomings of flow based methods have not served the HDR cause well.</p><p>This can be seen in an attempt by <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>, where regardless of the accurate spatial reconstruction in saturated image regions, alignment artifacts can be observed for input frames with severe motion. This can be seen in the results provided by the authors of AHDRNet in the image below. Another attempt at HDR reconstruction that targets specifically at highly dynamic LDR bracketed input (<a href="https://arxiv.org/pdf/1711.08937.pdf" rel="noopener">Wu et. al</a>) claims to exploit the apparent prowess of CNN architectures in learning misalignments and compensating for the ghosting artifacts. Results presented below however show that there is scope for improvement.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*30oeBm3mjtt2UsDCSqu0gA.png" class="kg-image" alt></figure><h3 id="attention-to-the-rescue">Attention to the rescue</h3><p>The authors propose to use attention mechanisms to solve this bi-faceted problem of reduction of alignment artifacts + accurate HDR reconstruction by using attention mechanisms. If you think about it, attention networks are just a very few Conv layers stacked together, followed (usually) by a sigmoid activation that allows the networks to focus on what’s important and pertinent to the application.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*kOhxdmePmBQfgrhhKMiwwA.png" class="kg-image" alt></figure><p>Here, the attention networks are utilised to suppress the alignment artifacts and to focus on infusing out better-exposed image regions into the generated image by attending to the spatial dynamics of the bracketed images with respect to the reference image. Regions which correspond to the reference image are highlighted, whereas regions with severe motion and saturation are suppressed. We’ll see how the attention information matrix is processed and implemented, in terms of the mathematics behind it, in some time.</p><p>The attention part of the network focuses on making decisions about which image regions contribute better to the accuracy of the network output. This is followed by a merge network that based on the attention output, tries to create HDR content from the LDR input. The better the attention mechanism, the better is the input to the merge network, thus allowing it to utilise information in the more relevant parts of the input. The merge network has been developed using dilated dense residual blocks that improve gradient-flow, hierarchical learning and convergence. The whole network is trained in an end-to-end fashion and therefore both subnetworks mutually influence each other, and learn together.</p><h3 id="implementation">Implementation</h3><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*IJfbHMvhiFWC5yQe6PCxxg.jpeg" class="kg-image" alt><figcaption>Overview</figcaption></figure><h4 id="preprocessing">Preprocessing</h4><p>The non-linear LDR input (<em>I1, I2 , I3</em>) is transferred to the linear domain by applying an inverse CRF (gamma correction here) and dividing by their corresponding exposure times.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*iy2Do0TiEa70L4ZZOrUU1A.png" class="kg-image" alt><figcaption>γ = 2.2</figcaption></figure><p>Both the linear and non-linear input (<em>Ii, Hi</em>) are concatenated along the channel dimensions to form <em>Xi</em>. <em>X1</em> , <em>X2</em> and <em>X3</em> are fed to the network to generate the corresponding HDR output.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*MgAQuh0sfypm-2aEUM0g6A.png" class="kg-image" alt><figcaption><em class="markup--em markup--figure-em">H</em> is the generated image, <em class="markup--em markup--figure-em">f</em> (.) represents the AHDRNet network and <em class="markup--em markup--figure-em">θ</em> the network parameters</figcaption></figure><p>The network performs better when it has the linearised input information at its disposal. This has been observed and utilised in <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a> as well as <a href="https://arxiv.org/pdf/1711.08937.pdf" rel="noopener">Wu et. al</a>.</p><h3 id="architecture">Architecture</h3><p>The whole network comprises of two sub-networks — attention network and merging network.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*FHnHzLbQz58BHcRMFhOd1w.jpeg" class="kg-image" alt><figcaption>Attention network</figcaption></figure><p>The attention network, as discussed above helps in avoiding alignment artifacts by highlighting and using information from regions in the neighbouring images (non-reference images) that correspond to the reference image. It does so in the following way.</p><p>Attention is not extracted from and applied directly to the concatenated image pairs. First the <em>Xi</em> s are passed through a Conv layer to extract a 64 channel feature map <em>Zi</em>.</p><p>Then, the reference feature map (<em>Z2</em> or <em>Zr</em>) along with a neighbouring image feature map (<em>Z1</em> and <em>Z3</em>) is fed into the attention module that generates an attention map to mark the important regions in the non-reference feature map with reference to <em>Zr</em>.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*TeylpymAABwM2B6X.png" class="kg-image" alt></figure><p>This is done for both the pairs — (<em>Z1</em> , <em>Z2</em>) and (<em>Z3</em> , <em>Z2</em>). This can be seen clearly in the above network representation.</p><p>Before we get into what the attention module does, let’s see what to do with the attention map that is generated. The attention map generated is essentially a 64-channel matrix that contains values between [0,1]. This matrix serves as a kind of a weight-matrix, in which each element represents the importance of a corresponding element in the feature matrix of the neighbour image, with reference to <em>Z2</em>. This is implemented by using the attention map generated from (<em>Z1</em> , <em>Z2</em>) by doing an element wise multiplication of the attention map and <em>Z1</em> to get <em>Z’1</em>.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*AyY92BJFOzyEAatL.png" class="kg-image" alt></figure><p>This operation results in important features (where attention is closer to 1) in <em>Z1</em> getting higher numerical values and correspondingly lower values for less important features. This manifests in only important image regions from <em>Z1</em> going ahead in the network to contribute to the final HDR output. The same thing happens between (<em>Z3</em> , <em>Z2</em>) to get <em>Z’3</em>.</p><p>Now that we have all the input pieces most relevant to construct the HDR image, we concatenate these along the channel dimension as below -</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*oulHopStLvaePUth.png" class="kg-image" alt></figure><h4 id="attention-module">Attention module</h4><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*VJ5ooOqafNOC5v7O.png" class="kg-image" alt></figure><p>Let’s see how these attention maps are generated. The attention module used in this paper comprises of 2 Conv2d layers that output a 64-channel matrix, followed by a ReLU and a sigmoid activation respectively. It takes as input a concatenated feature vector of neighbouring and reference image (2 x 3 = 6 channels). The sigmoid activation, in the end, is used to contain the output in a [0,1] range.</p><h4 id="attention-results">Attention results</h4><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*op6pjaA5-eo-eecZ.jpg" class="kg-image" alt><figcaption>Attention map examples from the paper. ( a ) to ( c )— Alignment attention; ( d ) to ( f ) — Exposure attention</figcaption></figure><p>In ( a ) to ( c ), it can be observed from the results above how regions with motion discrepancies in non-reference images are suppressed (darker blue region) whereas regions that have correspondances with the reference image are highlighted (brighter blue-ish green). In ( d ) to ( f ), the regions that are better exposed in the neighbouring frames are highlighted and saturated regions are suppressed.</p><h3 id="merging-network">Merging network</h3><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*nq0yC0HIakfLZcdZ.jpg" class="kg-image" alt></figure><p>The concatenated feature map (<em>Zs</em>) is given as input to the merging network. The merging network used by the authors is the residual dense network proposed in <a href="https://arxiv.org/abs/1802.08797" rel="noopener">Zhang et. al</a>. Instead of the conventional Conv operations, the authors have used dilated convolutions to propagate a larger receptive field, thus calling it a Dilated Residual Dense Block (DRDB). There are 3 such blocks in the merging network that consist of dense concatenation based skip-connections and residual connections that have been proved quite effective for CNNs in solving gradient vanishing, allowing better backpropagation, hierarchical learning and therefore aiding and improving convergence performance. In the proposed AHDRNet network, each DRDB consists of 6 Conv layers and a growth rate of 32.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*1ZrNm30PPxTHo9Iw.png" class="kg-image" alt><figcaption>DRDB</figcaption></figure><p>The authors have also employed local and global residual skip connections that bypass low level features to higher level ones. Local residual learning is implemented within the DRDBs whereas global residual learning is for transferring the shallow feature maps containing <em>pure</em> information from the reference image to the latter stages. This, and other network specifications can be observed in the merging network diagram.</p><h3 id="loss-functions">Loss functions</h3><p>Just like <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>, the loss is calculated between <em>μ</em>-law tonemapped generated and tonemapped ground truth images. <em>μ</em> has been set to 5000 for all the experiments. The <em>μ</em>-law can be defined as -</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*W_ebdoq-1Dus37Gi.png" class="kg-image" alt><figcaption><em class="markup--em markup--figure-em">μ</em>-law</figcaption></figure><p>An L1 loss has been used for the same. Quantitative comparisons PSNR and HDR-VDP-2 scores presented in the paper convey that L1 loss is better at reconstructing finer details as compared to an L2 loss.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*In81bfClnA_qHrlV.png" class="kg-image" alt></figure><h4 id="implementation-specifications">Implementation specifications</h4><p>The architecture was implemented using PyTorch. The specifications and hyper-parameters are -</p><ul><li>Weight initialisation: Xavier</li><li>Optimizer: ADAM</li><li>Learning rate: 1 x 10–5</li><li>Batch size: 8</li><li>GPU: NVIDIA GeForce 1080 Ti</li><li>Inference time for 1 image (1500x1000): 0.32 sec</li></ul><h4 id="results">Results</h4><p>The networks were trained and tested on the datasets provided by <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>. The authors have provided quantitative and qualitative comparisons between several variants of the network, in terms of PSNR and HDR-VDP-2 scores.</p><ul><li>AHDRNet — The full model of the AHDRNet.</li><li>DRDB-Net (i.e. AHDRNet w/o attention)</li><li>A-RDB-Net (i.e. AHDRNet w/o dilation)</li><li>RDB-Net (i.e. AHDRNet w/o attention and dilation)</li><li>RB-Net (i.e. AHDRNet w/o attention, dilation and dense connections). DRDBs replaced by RBs.</li><li>Deep-RB-Net. More RBs are used.</li></ul><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*EUnWQxWutnMEJg6i.png" class="kg-image" alt></figure><p>The results show how each component of the AHDRNet is important to the efficacy of the whole network i.e. attention is important, dilated convolutions are important, dense connections are important and residual learning is important.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/0*WC-uKJVWhFLumxbb.png" class="kg-image" alt><figcaption>Visual results, from the paper</figcaption></figure><p>Comparison with state-of-the-art</p><p>Comparisons with current state-of-the-art approaches (learning based and non-learning based) reveal how AHDRNet beats existing approaches. The closest competitor is obviously <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>’s implementation that comes only second to AHDRNet. The authors have also provided the results of a variant of AHDRNet that uses Optical-flow aligned images (AHDRNet + OF).</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*iWVJeN5urpZVz9Ka.png" class="kg-image" alt></figure><p>The visual results show the efficacy of the network in infusing meticulous details in the generated HDR output without giving rise to any alignment artifacts even in cases of severe motion. Here are some of the results, taken from the paper -</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*muRv_BXdBEHgJOxd.jpg" class="kg-image" alt></figure><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/0*H1TAnwS6l0whMraX.png" class="kg-image" alt></figure><h3 id="conclusion">Conclusion</h3><p>AHDRNet is the first attention-based approach to solving the problem of HDR image generation. The finesse of attention mechanisms has been utilised to align the input LDR images. Previous attempts at image alignment have used Optical flow-based methods, which have some inaccuracies and do not perform well for severe motion between frames. An attention-based approach however performs exceedingly well in terms of HDR reconstruction as well as in removing alignment artifacts. Extensive experiment reveal how AHDRNet supersedes existing approaches qualitatively and quantitatively, and that it has become the new state-of-the-art in HDR image generation.</p><h3 id="references">References</h3><ul><li>Qingsen Yan, Dong Gong, Qinfeng Shi, Anton van den Hengel, Chunhua Shen, Ian Reid, Yanning Zhang, <a href="https://arxiv.org/abs/1904.10293" rel="noopener">Attention-guided Network for Ghost-free High Dynamic Range Imaging</a> (2019), CVPR 2019</li><li>N. K. Kalantari and R. Ramamoorthi, <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Deep high dynamic rangeimaging of dynamic scenes</a> (2017), ACM Trans. Graph</li><li>Shangzhe Wu, Jiarui Xu, Yu-Wing Tai, and Chi-Keung Tang, <a href="https://arxiv.org/abs/1711.08937" rel="noopener">Deep high dynamic range imaging with large foreground motions</a> (2018), European Conference on Computer Vision (ECCV), September 2018</li></ul>
+            </div>
+          </div>
+        </div>
+        <section class="m-recommended">
+          <div class="l-wrapper in-recommended">
+            <h3 class="m-section-title in-recommended"><b>Recommended for you</b></h3>
+            <div class="m-recommended-articles">
+              <div class="m-recommended-slider glide js-recommended-slider">
+                <div class="glide__track" data-glide-el="track">
+                  <div class="glide__slides">
+                    
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-paper-review tag-computer-vision tag-deep-learning">
+    <div class="m-article-card__picture">
+      <a href="../densenet-densely-connected-convolutional-networks/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2020/10/1_TeHVqikNc68QC98Vm9M98Q.gif" loading="lazy" alt="">
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/paper-review/index.html" class="m-article-card__tag">Paper Review</a>
+      <a href="../densenet-densely-connected-convolutional-networks/index.html" class="m-article-card__info-link" aria-label="DenseNet -Densely Connected Convolutional Networks">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="DenseNet -Densely Connected Convolutional Networks">
+            DenseNet -Densely Connected Convolutional Networks
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>a year ago</span>
+          <span>•</span>
+          <span>7 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-hdr tag-computer-vision">
+    <div class="m-article-card__picture">
+      <a href="../what-is-an-hdr-image-anyway/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" loading="lazy" alt="">
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/hdr/index.html" class="m-article-card__tag">HDR</a>
+      <a href="../what-is-an-hdr-image-anyway/index.html" class="m-article-card__info-link" aria-label="HDR Imaging: What is an HDR image anyway?">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="HDR Imaging: What is an HDR image anyway?">
+            HDR Imaging: What is an HDR image anyway?
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>a year ago</span>
+          <span>•</span>
+          <span>8 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                  </div>
+                </div>
+                <div data-glide-el="controls" class="glide__arrows js-controls">
+                  <button data-glide-dir="&lt;" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                    <span class="icon-arrow-left" aria-hidden="true"></span>
+                  </button>
+                  <button data-glide-dir="&gt;" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                    <span class="icon-arrow-right" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <p class="m-footer-copyright">
+      <span>Mukul Khanna © 2020</span>
+      <span>  •  </span>
+      <span>Published w/ <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+
+    <nav class="m-footer-social">
+        <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg" target="_blank" rel="noopener" aria-label="Youtube">
+          <span class="icon-youtube" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://localhost:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You've successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You've successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/vendor.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/app.js?v=3200ab924b"></script>
+
+      <script defer src="../assets/js/post.js?v=3200ab924b"></script>
+
+
+    <!-- prism.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-javascript.min.js"></script>
+  </body>
+</html>

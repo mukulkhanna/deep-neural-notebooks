@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>How you can test your Vue.js apps in less than 7 minutes</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="../assets/css/app.css?v=3200ab924b" as="style">
+    <link rel="preload" href="../assets/js/manifest.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/vendor.js?v=3200ab924b" as="script">
+    <link rel="preload" href="../assets/js/app.js?v=3200ab924b" as="script">
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css?v=3200ab924b" as="style">
+  <link rel="preload" href="../assets/js/post.js?v=3200ab924b" as="script">
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff?v=3200ab924b") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff?v=3200ab924b") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff2?v=3200ab924b") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff?v=3200ab924b") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo?v=3200ab924b");
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf?aoz2mo?v=3200ab924b") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff?aoz2mo?v=3200ab924b") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg?aoz2mo") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=3200ab924b" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css?v=3200ab924b" media="screen">
+
+
+    
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How you can test your Vue.js apps in less than 7 minutes">
+    <meta property="og:description" content="Before we dive into the implementation, let’s get a few concepts cleared. What is testing?Manually trying all possible inputs to a basic form validator can be cumbersome. It might not seem like a big deal for a small website. But for bigger and more complex web applications consisting">
+    <meta property="og:url" content="http://localhost:2368/vuejs-testing-in-less-than-7-minutes/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta property="article:published_time" content="2018-02-13T04:47:00.000Z">
+    <meta property="article:modified_time" content="2020-10-24T04:51:24.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How you can test your Vue.js apps in less than 7 minutes">
+    <meta name="twitter:description" content="Before we dive into the implementation, let’s get a few concepts cleared. What is testing?Manually trying all possible inputs to a basic form validator can be cumbersome. It might not seem like a big deal for a small website. But for bigger and more complex web applications consisting">
+    <meta name="twitter:url" content="http://localhost:2368/vuejs-testing-in-less-than-7-minutes/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="3000">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "url": "http://localhost:2368/author/mukul/",
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "How you can test your Vue.js apps in less than 7 minutes",
+    "url": "http://localhost:2368/vuejs-testing-in-less-than-7-minutes/",
+    "datePublished": "2018-02-13T04:47:00.000Z",
+    "dateModified": "2020-10-24T04:51:24.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 3000
+    },
+    "description": "Before we dive into the implementation, let’s get a few concepts cleared.\n\nWhat is testing?\nManually trying all possible inputs to a basic form validator can be cumbersome.\n\nIt might not seem like a big deal for a small website. But for bigger and more\ncomplex web applications consisting of dozens of components along with their\nfunctions, routes, states, mutations and so on, it is not feasible or advisable\nto test the functioning of all these constituents.\n\nAutomating this part of the trial and ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.21">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../rss/index.html">
+    <script>
+  const ghostSearchApiKey = 'efff2b0d00118a51535099c413'
+</script>
+
+<!-- prism.js -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css">
+
+<style>
+  pre[class*="language-"] {
+    margin: 0 0 1.5em !important;
+  }
+  code {
+    text-shadow: none !important;
+  }
+  .token.operator {
+    background: none !important;
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #20262E !important;
+  }
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
+                  </a>
+                </li>
+                
+    <li class="nav-mukul-khanna">
+      <a href="../about/index.html">mukul khanna</a>
+    </li>
+    <li class="nav-podcast">
+      <a href="../index.html">podcast</a>
+    </li>
+    <li class="nav-blog">
+      <a href="../author/mukul/index.html">blog</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../deep-neural-notebooks-podcast/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Screenshot-2020-10-24-at-7.59.26-AM.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Deep Neural Notebooks: About the Podcast">
+                                      Deep Neural Notebooks: About the Podcast
+                                    </h3>
+                                    <span class="m-recent-article__date">4 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-10-practical-natural-language-processing-book-nlp-ml-ai-in-the-industry-gpt-3-and-mor/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/09/Podcast-thumbnails.002.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more">
+                                      DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-9-computer-vision-machine-learning-inside-the-car/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Podcast-thumbnails-2.009.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 9: NVIDIA's AI Co-Pilot , Computer Vision &amp; ML Inside The Car // Shalini De Mello">
+                                      DNN 9: NVIDIA's AI Co-Pilot , Computer Vision &amp; ML Inside The Car // Shalini De Mello
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../dnn-8/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2020/10/Podcast-thumbnails-2.008.jpeg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
+                                      DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani
+                                    </h3>
+                                    <span class="m-recent-article__date">5 months ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/art/index.html">Art</a>
+                            </li>
+                            <li>
+                              <a href="../tag/book/index.html">Book</a>
+                            </li>
+                            <li>
+                              <a href="../tag/chatbots/index.html">Chatbots</a>
+                            </li>
+                            <li>
+                              <a href="../tag/computer-vision/index.html">Computer Vision</a>
+                            </li>
+                            <li>
+                              <a href="../tag/creativity/index.html">Creativity</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-science/index.html">Data Science</a>
+                            </li>
+                            <li>
+                              <a href="../tag/deep-learning/index.html">Deep Learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/gsoc/index.html">GSOC</a>
+                            </li>
+                            <li>
+                              <a href="../tag/hdr/index.html">HDR</a>
+                            </li>
+                            <li>
+                              <a href="../tag/human-computer-interaction/index.html">Human Computer Interaction</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap" style="margin-top:4%">
+    
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
+          <div class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">How you can test your Vue.js apps in less than 7 minutes</h1>
+              <div class="m-heading__meta">
+                <span class="m-heading__meta__time">Feb 13, 2018</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.youtube.com/playlist?list=PLKsk3K4Z-1AVwIzEi9pk-ayEh9uxdyweL" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Youtube">
+                    <span class="icon-youtube" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://open.spotify.com/show/2eq1jD7V5K19aZUUJnIz5z" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Spotify">
+                    <span class="icon-spotify" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*PkFvOQVwXsa-Rsd004WyDQ.png" class="kg-image" alt></figure><p>Before we dive into the implementation, let’s get a few concepts cleared.</p><h3 id="what-is-testing">What is testing?</h3><p>Manually trying all possible inputs to a basic form validator can be cumbersome.</p><p>It might not seem like a big deal for a small website. But for bigger and more complex web applications consisting of dozens of components along with their functions, routes, states, mutations and so on, it is not feasible or advisable to test the functioning of all these constituents.</p><p>Automating this part of the trial and error based assessments of the code we have written is known as <strong>testing</strong> or <strong>automated testing</strong>.</p><p>Edd Yerburgh, a core Vue team member and the maintainer of vue-test-utils (formerly <strong>Avoriaz</strong>), defines automated testing in his <a href="https://livebook.manning.com#!/book/testing-vuejs-applications/chapter-1/v-3/point-1371-28-28-0" rel="noopener">book</a> as:</p><blockquote>Automated testing is the practice of writing programs to run tests against your application code. Once the programs are written, they can be executed automatically.</blockquote><p>There are essentially three types of tests:</p><ol><li>Unit tests</li><li>End to end tests</li><li>Snapshot tests</li></ol><h4 id="unit-tests"><strong>Unit tests</strong></h4><p>These are basic tests that check if the atomic elements of the website (Vue components and functions) work properly. Edd calls them <strong>component contracts</strong>. Each component is expected to work as it has promised to do, and these tests make sure that they are fulfilled.</p><h4 id="end-to-end-e2e-tests"><strong>End to end (E2E) tests</strong></h4><p>E2E tests test the whole workflow of the website. It can be said that one E2E test is made up of multiple granular unit tests. They are slow, but they check the whole functionality of the website.</p><p>But they are also difficult to debug because it’s tough to locate which parts didn’t work as they were supposed to. There could be more than one reason that the tests failed.</p><h4 id="snapshot-tests">Snapshot tests</h4><p>Bugs in the code don’t only affect the functionality of the website, but also the positioning of the components in the UI. Snapshot tests check for such changes in the appearance of the application. It involves rendering the UI, capturing a screenshot, and comparing it to a reference image stored along with the test. The test fails if the two images don’t match.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn-images-1.medium.com/max/800/1*4Tw2yL3mzDvM8FA8Mcwmrg.jpeg" class="kg-image" alt><figcaption><a href="https://livebook.manning.com/#!/book/testing-vuejs-applications/chapter-1/v-3/156" data-href="https://livebook.manning.com/#!/book/testing-vuejs-applications/chapter-1/v-3/156" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">The testing pyramid</a></figcaption></figure><p>These tests also help developers write proper documentation of the code, which is quite useful in large scale applications with multiple contributors.</p><p>So now that we’ve established that testing can help us save a lot of time and optimize our code, let’s see how tests are configured, created, and run.</p><p>We will be using <strong>vue-test-utils</strong> as the testing utility library for Vue.js<em>. </em>Now we also need to choose a test runner. There are many to choose from, but Jest and Mocha-Webpack are both equally good. They just have some tradeoffs between the configuration upfront and the support for SFCs (single file components).</p><p>We will be using the <strong>mocha-webpack</strong> configuration for this demo.</p><h3 id="creating-the-projectnpm-install-vuenpm-install-global-vue-clivue-init-webpack-vue-testingcd-vue-testingnpm-installnpm-run-dev"><strong>Creating the project</strong>npm install vuenpm install --global vue-clivue init webpack vue-testingcd vue-testingnpm installnpm run dev</h3><p>Using the above commands, create a Vue webpack project in which we will be setting up the testing environment.</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*hW9NereuY6BpbKAwKIiKRg.jpeg" class="kg-image" alt></figure><h4 id="installing-dependencies"><strong>Installing dependencies</strong></h4><p>To install <a href="https://github.com/vuejs/vue-test-utils" rel="noopener">vue-test-utils</a><em>, </em>mocha,<em> </em>and mocha-webpack:</p><pre><code>npm install --save-dev @vue/test-utilsnpm install --save-dev mocha mocha-webpack</code></pre><p>To emulate a subset of a browser environment to run our tests, we’ll install <a href="https://github.com/jsdom/jsdom" rel="noopener">jsdom</a><em> </em>and <a href="https://github.com/rstacruz/jsdom-global" rel="noopener">jsdom-globa</a>l:</p><pre><code>npm install --save-dev jsdom jsdom-global</code></pre><p>Some of the dependencies that we will be importing in our tests are difficult for the webpack to bundle. So, to be able to remove them from the bundling process and to increase test bootup speed, we install <strong>node-externals:</strong>npm install --save-dev webpack-node-externals</p><p>Vue recommends <a href="https://github.com/Automattic/expect.js" rel="noopener">expect</a> as an assertion library that essentially decides whether the test fails or passes depending on the argument it receives.</p><pre><code>npm install --save-dev expect</code></pre><p>We need to make it globally accessible to avoid importing it in every single test. We create a directory named <strong>test</strong><em> </em>in the root directory and create a file named <strong>test/setup.js</strong><em> . </em>Import the modules with <strong>require</strong><em>:</em></p><pre><code class="language-Javascript">//setup.js
+
+require('jsdom-global')()
+global.expect = require('expect')</code></pre><p>We can also include code coverage in the test results using the <strong>istanbul</strong><em> </em>plugin<em> </em>to get a report like this:</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*1l1xw55caGD-W-akmUCnbg.jpeg" class="kg-image" alt></figure><p>It is used to describe the degree to which the source code of an application is executed when a particular test suite runs.</p><pre><code>npm install --save-dev nyc babel-plugin-istanbul</code></pre><p>Also in the <strong>.babelrc</strong><em> </em>in the <strong>plugins</strong><em> </em>array, add <strong>istanbul:</strong></p><pre><code>//.babelrc
+
+plugins": ["transform-vue-jsx", "transform-runtime", "istanbul"]</code></pre><p>So we have installed all the dependencies, and it’s time to make the final configurations before we can start writing the tests.</p><p>In <strong>package.json</strong>, we need to add a <strong>test</strong><em> </em>script that runs the test:</p><pre><code class="language-JSON">//package.json
+
+"scripts":{
+	"test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config build/webpack.base.conf.js --require test/setup.js test/**/*.spec.js"
+}</code></pre><p>We also need to specify the files that needed to be included for the code coverage in the <strong>package.json:</strong></p><pre><code class="language-JSON">//package.json
+
+"nyc":{
+    "include":[
+      "src/**/*.(js|vue)" ],
+    "instrument":false,
+    "sourceMap":false
+}</code></pre><p>The last configuration before writing the test would be adding the following in <strong>webpack.base.conf.js:</strong></p><pre><code class="language-Javascript">//webpack.base.conf.js
+
+if (process.env.NODE_ENV === 'test'){
+
+  module.exports.externals = [require('webpack-node-externals')()]
+  module.exports.devtool = 'inline-cheap-module-source-map'
+
+}</code></pre><p>We can perform our test on the inbuilt Vue component that comes with the webpack boilerplate.</p><p>Every test file would have a <strong>‘.spec.js’</strong><em> </em>extension.</p><p>In the test directory, we add a test file <strong>testOne.spec.js -</strong></p><pre><code class="language-Javascript">//testOne.spec.js
+
+import {shallow} from '@vue/test-utils'
+import HelloWorld from '../src/components/HelloWorld.vue'
+</code></pre><p>We start by importing <strong>shallow</strong><em> </em>from the <strong>vue-test-utils</strong><em>. </em><strong>Shallow</strong><em> </em>creates a <a href="https://vue-test-utils.vuejs.org/en/api/wrapper/" rel="noopener">wrapper</a> for the Vue component on which we want to run the test. This wrapper is an object that contains the mounted component and methods to test parts of the 	code. Then we import the Vue component on which we run the test.</p><pre><code class="language-Javascript">//testOne.spec.js
+
+describe('HelloWorld.vue',function(){        
+	it('Checking &lt;h2&gt; tag text',function(){                
+    	const wrapper = shallow(HelloWorld)        
+        const h2= wrapper.find('h2')        
+        expect(h2.text()).toBe('Essential Links')        
+    })
+})</code></pre><p>Then we create what we can call a <strong>test suite</strong>, using the <strong>describe()</strong><em> </em>method of Mocha’s testing framework. This test suite basically groups multiple test cases into one along with providing some information about the tests and the component.</p><p>In this describe function, we callback a function that specifies the test cases using the <strong>it() </strong>function. Each it() method describes a test case with the purpose of the test as the first parameter followed by a callback function defining the test.</p><p>Then:</p><ul><li>We create a wrapper of the Vue component</li><li>Use its <strong>find()</strong><em> </em>method to get all &lt;h2&gt; tag elements</li><li>Compare its text with what it is supposed to be.</li></ul><p>Yay! Our test is ready to run.npm run test</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*aRLjKH_Rts_8T4NgdvmwiQ.jpeg" class="kg-image" alt></figure><p>So, our test was successful — the code was able to find an &lt;h2&gt; tag in the HelloWorld.vue component with ‘Essential Links’ as its text.</p><p>Now if we change the expected test to anything else, the test would fail. <br>I changed it to:</p><pre><code>expect(h2.text()).toBe('Essential Linx')</code></pre><p>and the test fails. The failed test error is quite descriptive, though, and you can see what the code was expecting and what it receives:</p><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/800/1*-gttMaktDFEOKt29IDUaBw.jpeg" class="kg-image" alt></figure><p>We can add multiple test cases in one test file by using multiple <strong>it()</strong> methods and expecting different conditions.</p><pre><code class="language-Javascript">describe('HelloWorld.vue',function(){  
+
+it('Checking &lt;h2&gt; tag text',function(){
+        const wrapper = shallow(HelloWorld)        
+        const h2 = wrapper.find('h2')
+        expect(h2.text()).toBe('Essential Links')    
+    }),    
+it('Checking &lt;h1&gt; tag text',function(){
+        const wrapper = shallow(HelloWorld)
+        const h1 = wrapper.find('h1')
+        expect(h1.text()).toBe('Welcome to Your Vue.js App')    
+    })
+})</code></pre><p>Here we are also testing if the &lt;h1&gt; tag renders what it is supposed to.</p><p>So this was a pretty basic test that just gives you an understanding of how tests are configured, coded, and run without even opening the browser or starting the server.</p><p>The link to the GitHub repository is <a href="https://github.com/mukulkhanna/vue-testing" rel="noopener">here</a>.</p><h3 id="wrapping-up">Wrapping up</h3><p>Edd Yerburgh’s book ‘<a href="https://www.manning.com/books/testing-vuejs-applications" rel="noopener">Testing Vue.js Applications</a>’ helped me a lot in getting a wider picture of the importance of testing and how to implement it. I would recommend it to anyone who wants to learn testing beyond the scope of beginner-level content and really dive into it.</p><p>Other than that, I have been spending some time on TDD (Test Driven Development) concepts and am looking forward to writing a beginner’s tutorial about the world of TDD with Vue.js.</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <p class="m-footer-copyright">
+      <span>Mukul Khanna © 2020</span>
+      <span>  •  </span>
+      <span>Published w/ <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+
+    <nav class="m-footer-social">
+        <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg" target="_blank" rel="noopener" aria-label="Youtube">
+          <span class="icon-youtube" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://localhost:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You've successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You've successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/vendor.js?v=3200ab924b"></script>
+    <script defer src="../assets/js/app.js?v=3200ab924b"></script>
+
+      <script defer src="../assets/js/post.js?v=3200ab924b"></script>
+
+
+    <!-- prism.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-javascript.min.js"></script>
+  </body>
+</html>
