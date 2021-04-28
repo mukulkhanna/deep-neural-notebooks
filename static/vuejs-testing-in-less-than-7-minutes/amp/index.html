@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>How you can test your Vue.js apps in less than 7 minutes 🔬</title>
+
+    <link rel="icon" href="../../favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How you can test your Vue.js apps in less than 7 minutes 🔬">
+    <meta property="og:description" content="Before we dive into the implementation, let’s get a few concepts cleared. What is testing?Manually trying all possible inputs to a basic form validator can be cumbersome. It might not seem like a big deal for a small website. But for bigger and more complex web applications consisting">
+    <meta property="og:url" content="http://localhost:2368/vuejs-testing-in-less-than-7-minutes/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta property="article:published_time" content="2018-02-13T04:47:00.000Z">
+    <meta property="article:modified_time" content="2020-10-24T05:59:35.000Z">
+    <meta property="article:tag" content="16k+ views">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How you can test your Vue.js apps in less than 7 minutes 🔬">
+    <meta name="twitter:description" content="Before we dive into the implementation, let’s get a few concepts cleared. What is testing?Manually trying all possible inputs to a basic form validator can be cumbersome. It might not seem like a big deal for a small website. But for bigger and more complex web applications consisting">
+    <meta name="twitter:url" content="http://localhost:2368/vuejs-testing-in-less-than-7-minutes/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="16k+ views">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="3000">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "url": "http://localhost:2368/author/mukul/",
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "How you can test your Vue.js apps in less than 7 minutes 🔬",
+    "url": "http://localhost:2368/vuejs-testing-in-less-than-7-minutes/",
+    "datePublished": "2018-02-13T04:47:00.000Z",
+    "dateModified": "2020-10-24T05:59:35.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 3000
+    },
+    "keywords": "16k+ views",
+    "description": "Before we dive into the implementation, let’s get a few concepts cleared.\n\nWhat is testing?\nManually trying all possible inputs to a basic form validator can be cumbersome.\n\nIt might not seem like a big deal for a small website. But for bigger and more\ncomplex web applications consisting of dozens of components along with their\nfunctions, routes, states, mutations and so on, it is not feasible or advisable\nto test the functioning of all these constituents.\n\nAutomating this part of the trial and ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.2">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #de54ab;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">How you can test your Vue.js apps in less than 7 minutes 🔬</h1>
+                <section class="post-meta">
+                    Mukul Khanna -
+                    <time class="post-date" datetime="2018-02-13">13 Feb 2018</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1557948206-7478d769f813?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*PkFvOQVwXsa-Rsd004WyDQ.png" class="kg-image" alt width="800" height="350" layout="responsive"></amp-img></figure><p>Before we dive into the implementation, let’s get a few concepts cleared.</p><h3 id="what-is-testing">What is testing?</h3><p>Manually trying all possible inputs to a basic form validator can be cumbersome.</p><p>It might not seem like a big deal for a small website. But for bigger and more complex web applications consisting of dozens of components along with their functions, routes, states, mutations and so on, it is not feasible or advisable to test the functioning of all these constituents.</p><p>Automating this part of the trial and error based assessments of the code we have written is known as <strong>testing</strong> or <strong>automated testing</strong>.</p><p>Edd Yerburgh, a core Vue team member and the maintainer of vue-test-utils (formerly <strong>Avoriaz</strong>), defines automated testing in his <a href="https://livebook.manning.com#!/book/testing-vuejs-applications/chapter-1/v-3/point-1371-28-28-0" rel="noopener">book</a> as:</p><blockquote>Automated testing is the practice of writing programs to run tests against your application code. Once the programs are written, they can be executed automatically.</blockquote><p>There are essentially three types of tests:</p><ol><li>Unit tests</li><li>End to end tests</li><li>Snapshot tests</li></ol><h4 id="unit-tests"><strong>Unit tests</strong></h4><p>These are basic tests that check if the atomic elements of the website (Vue components and functions) work properly. Edd calls them <strong>component contracts</strong>. Each component is expected to work as it has promised to do, and these tests make sure that they are fulfilled.</p><h4 id="end-to-end-e2e-tests"><strong>End to end (E2E) tests</strong></h4><p>E2E tests test the whole workflow of the website. It can be said that one E2E test is made up of multiple granular unit tests. They are slow, but they check the whole functionality of the website.</p><p>But they are also difficult to debug because it’s tough to locate which parts didn’t work as they were supposed to. There could be more than one reason that the tests failed.</p><h4 id="snapshot-tests">Snapshot tests</h4><p>Bugs in the code don’t only affect the functionality of the website, but also the positioning of the components in the UI. Snapshot tests check for such changes in the appearance of the application. It involves rendering the UI, capturing a screenshot, and comparing it to a reference image stored along with the test. The test fails if the two images don’t match.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*4Tw2yL3mzDvM8FA8Mcwmrg.jpeg" class="kg-image" alt width="605" height="295" layout="responsive"></amp-img><figcaption><a href="https://livebook.manning.com/#!/book/testing-vuejs-applications/chapter-1/v-3/156" data-href="https://livebook.manning.com/#!/book/testing-vuejs-applications/chapter-1/v-3/156" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">The testing pyramid</a></figcaption></figure><p>These tests also help developers write proper documentation of the code, which is quite useful in large scale applications with multiple contributors.</p><p>So now that we’ve established that testing can help us save a lot of time and optimize our code, let’s see how tests are configured, created, and run.</p><p>We will be using <strong>vue-test-utils</strong> as the testing utility library for Vue.js<em>. </em>Now we also need to choose a test runner. There are many to choose from, but Jest and Mocha-Webpack are both equally good. They just have some tradeoffs between the configuration upfront and the support for SFCs (single file components).</p><p>We will be using the <strong>mocha-webpack</strong> configuration for this demo.</p><h3 id="creating-the-projectnpm-install-vuenpm-install-global-vue-clivue-init-webpack-vue-testingcd-vue-testingnpm-installnpm-run-dev"><strong>Creating the project</strong>npm install vuenpm install --global vue-clivue init webpack vue-testingcd vue-testingnpm installnpm run dev</h3><p>Using the above commands, create a Vue webpack project in which we will be setting up the testing environment.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*hW9NereuY6BpbKAwKIiKRg.jpeg" class="kg-image" alt width="800" height="441" layout="responsive"></amp-img></figure><h4 id="installing-dependencies"><strong>Installing dependencies</strong></h4><p>To install <a href="https://github.com/vuejs/vue-test-utils" rel="noopener">vue-test-utils</a><em>, </em>mocha,<em> </em>and mocha-webpack:</p><pre><code>npm install --save-dev @vue/test-utilsnpm install --save-dev mocha mocha-webpack</code></pre><p>To emulate a subset of a browser environment to run our tests, we’ll install <a href="https://github.com/jsdom/jsdom" rel="noopener">jsdom</a><em> </em>and <a href="https://github.com/rstacruz/jsdom-global" rel="noopener">jsdom-globa</a>l:</p><pre><code>npm install --save-dev jsdom jsdom-global</code></pre><p>Some of the dependencies that we will be importing in our tests are difficult for the webpack to bundle. So, to be able to remove them from the bundling process and to increase test bootup speed, we install <strong>node-externals:</strong>npm install --save-dev webpack-node-externals</p><p>Vue recommends <a href="https://github.com/Automattic/expect.js" rel="noopener">expect</a> as an assertion library that essentially decides whether the test fails or passes depending on the argument it receives.</p><pre><code>npm install --save-dev expect</code></pre><p>We need to make it globally accessible to avoid importing it in every single test. We create a directory named <strong>test</strong><em> </em>in the root directory and create a file named <strong>test/setup.js</strong><em> . </em>Import the modules with <strong>require</strong><em>:</em></p><pre><code class="language-Javascript">//setup.js
+
+require('jsdom-global')()
+global.expect = require('expect')</code></pre><p>We can also include code coverage in the test results using the <strong>istanbul</strong><em> </em>plugin<em> </em>to get a report like this:</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*1l1xw55caGD-W-akmUCnbg.jpeg" class="kg-image" alt width="633" height="106" layout="responsive"></amp-img></figure><p>It is used to describe the degree to which the source code of an application is executed when a particular test suite runs.</p><pre><code>npm install --save-dev nyc babel-plugin-istanbul</code></pre><p>Also in the <strong>.babelrc</strong><em> </em>in the <strong>plugins</strong><em> </em>array, add <strong>istanbul:</strong></p><pre><code>//.babelrc
+
+plugins": ["transform-vue-jsx", "transform-runtime", "istanbul"]</code></pre><p>So we have installed all the dependencies, and it’s time to make the final configurations before we can start writing the tests.</p><p>In <strong>package.json</strong>, we need to add a <strong>test</strong><em> </em>script that runs the test:</p><pre><code class="language-JSON">//package.json
+
+"scripts":{
+	"test": "cross-env NODE_ENV=test nyc mocha-webpack --webpack-config build/webpack.base.conf.js --require test/setup.js test/**/*.spec.js"
+}</code></pre><p>We also need to specify the files that needed to be included for the code coverage in the <strong>package.json:</strong></p><pre><code class="language-JSON">//package.json
+
+"nyc":{
+    "include":[
+      "src/**/*.(js|vue)" ],
+    "instrument":false,
+    "sourceMap":false
+}</code></pre><p>The last configuration before writing the test would be adding the following in <strong>webpack.base.conf.js:</strong></p><pre><code class="language-Javascript">//webpack.base.conf.js
+
+if (process.env.NODE_ENV === 'test'){
+
+  module.exports.externals = [require('webpack-node-externals')()]
+  module.exports.devtool = 'inline-cheap-module-source-map'
+
+}</code></pre><p>We can perform our test on the inbuilt Vue component that comes with the webpack boilerplate.</p><p>Every test file would have a <strong>‘.spec.js’</strong><em> </em>extension.</p><p>In the test directory, we add a test file <strong>testOne.spec.js -</strong></p><pre><code class="language-Javascript">//testOne.spec.js
+
+import {shallow} from '@vue/test-utils'
+import HelloWorld from '../src/components/HelloWorld.vue'
+</code></pre><p>We start by importing <strong>shallow</strong><em> </em>from the <strong>vue-test-utils</strong><em>. </em><strong>Shallow</strong><em> </em>creates a <a href="https://vue-test-utils.vuejs.org/en/api/wrapper/" rel="noopener">wrapper</a> for the Vue component on which we want to run the test. This wrapper is an object that contains the mounted component and methods to test parts of the 	code. Then we import the Vue component on which we run the test.</p><pre><code class="language-Javascript">//testOne.spec.js
+
+describe('HelloWorld.vue',function(){        
+	it('Checking &lt;h2&gt; tag text',function(){                
+    	const wrapper = shallow(HelloWorld)        
+        const h2= wrapper.find('h2')        
+        expect(h2.text()).toBe('Essential Links')        
+    })
+})</code></pre><p>Then we create what we can call a <strong>test suite</strong>, using the <strong>describe()</strong><em> </em>method of Mocha’s testing framework. This test suite basically groups multiple test cases into one along with providing some information about the tests and the component.</p><p>In this describe function, we callback a function that specifies the test cases using the <strong>it() </strong>function. Each it() method describes a test case with the purpose of the test as the first parameter followed by a callback function defining the test.</p><p>Then:</p><ul><li>We create a wrapper of the Vue component</li><li>Use its <strong>find()</strong><em> </em>method to get all &lt;h2&gt; tag elements</li><li>Compare its text with what it is supposed to be.</li></ul><p>Yay! Our test is ready to run.npm run test</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*aRLjKH_Rts_8T4NgdvmwiQ.jpeg" class="kg-image" alt width="644" height="303" layout="responsive"></amp-img></figure><p>So, our test was successful — the code was able to find an &lt;h2&gt; tag in the HelloWorld.vue component with ‘Essential Links’ as its text.</p><p>Now if we change the expected test to anything else, the test would fail. <br>I changed it to:</p><pre><code>expect(h2.text()).toBe('Essential Linx')</code></pre><p>and the test fails. The failed test error is quite descriptive, though, and you can see what the code was expecting and what it receives:</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*-gttMaktDFEOKt29IDUaBw.jpeg" class="kg-image" alt width="768" height="512" layout="responsive"></amp-img></figure><p>We can add multiple test cases in one test file by using multiple <strong>it()</strong> methods and expecting different conditions.</p><pre><code class="language-Javascript">describe('HelloWorld.vue',function(){  
+
+it('Checking &lt;h2&gt; tag text',function(){
+        const wrapper = shallow(HelloWorld)        
+        const h2 = wrapper.find('h2')
+        expect(h2.text()).toBe('Essential Links')    
+    }),    
+it('Checking &lt;h1&gt; tag text',function(){
+        const wrapper = shallow(HelloWorld)
+        const h1 = wrapper.find('h1')
+        expect(h1.text()).toBe('Welcome to Your Vue.js App')    
+    })
+})</code></pre><p>Here we are also testing if the &lt;h1&gt; tag renders what it is supposed to.</p><p>So this was a pretty basic test that just gives you an understanding of how tests are configured, coded, and run without even opening the browser or starting the server.</p><p>The link to the GitHub repository is <a href="https://github.com/mukulkhanna/vue-testing" rel="noopener">here</a>.</p><h3 id="wrapping-up">Wrapping up</h3><p>Edd Yerburgh’s book ‘<a href="https://www.manning.com/books/testing-vuejs-applications" rel="noopener">Testing Vue.js Applications</a>’ helped me a lot in getting a wider picture of the importance of testing and how to implement it. I would recommend it to anyone who wants to learn testing beyond the scope of beginner-level content and really dive into it.</p><p>Other than that, I have been spending some time on TDD (Test Driven Development) concepts and am looking forward to writing a beginner’s tutorial about the world of TDD with Vue.js.</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>Deep Neural Notebooks</h3>
+            <p>Research, Insights &amp; Stories</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"></rect><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"></path><rect y="34" width="84" height="17" rx="4"></rect><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"></path><rect x="67" width="17" height="17" rx="4"></rect></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

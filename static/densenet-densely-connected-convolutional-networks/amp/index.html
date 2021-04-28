@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>DenseNet -Densely Connected Convolutional Networks (CVPR 2017) 📑</title>
+
+    <link rel="icon" href="../../favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="DenseNet -Densely Connected Convolutional Networks (CVPR 2017) 📑">
+    <meta property="og:description" content="CVPR 2017, Best Paper Award winner Dense connections“Simple models and a lot of data trump more elaborate models based on less data. “ — Peter NorvigAbout the paper‘Densely Connected Convolutional Networks’ received the Best Paper Award at the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2017. The paper">
+    <meta property="og:url" content="http://localhost:2368/densenet-densely-connected-convolutional-networks/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/10/1_TeHVqikNc68QC98Vm9M98Q.gif">
+    <meta property="article:published_time" content="2019-11-10T04:23:00.000Z">
+    <meta property="article:modified_time" content="2020-10-24T06:02:00.000Z">
+    <meta property="article:tag" content="8k+ views">
+    <meta property="article:tag" content="Paper Review">
+    <meta property="article:tag" content="Computer Vision">
+    <meta property="article:tag" content="Deep Learning">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DenseNet -Densely Connected Convolutional Networks (CVPR 2017) 📑">
+    <meta name="twitter:description" content="CVPR 2017, Best Paper Award winner Dense connections“Simple models and a lot of data trump more elaborate models based on less data. “ — Peter NorvigAbout the paper‘Densely Connected Convolutional Networks’ received the Best Paper Award at the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2017. The paper">
+    <meta name="twitter:url" content="http://localhost:2368/densenet-densely-connected-convolutional-networks/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/10/1_TeHVqikNc68QC98Vm9M98Q.gif">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="8k+ views, Paper Review, Computer Vision, Deep Learning">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    <meta property="og:image:width" content="735">
+    <meta property="og:image:height" content="374">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "url": "http://localhost:2368/author/mukul/",
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "DenseNet -Densely Connected Convolutional Networks (CVPR 2017) 📑",
+    "url": "http://localhost:2368/densenet-densely-connected-convolutional-networks/",
+    "datePublished": "2019-11-10T04:23:00.000Z",
+    "dateModified": "2020-10-24T06:02:00.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/10/1_TeHVqikNc68QC98Vm9M98Q.gif",
+        "width": 735,
+        "height": 374
+    },
+    "keywords": "8k+ views, Paper Review, Computer Vision, Deep Learning",
+    "description": "CVPR 2017, Best Paper Award winner\n\nDense connections&gt; “Simple models and a lot of data trump more elaborate models\nbased on less data. “ —Peter Norvig\nAbout the paper\n‘Densely Connected Convolutional Networks’ received the Best Paper Award at the\nIEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2017. The\npaper can be read here [https://arxiv.org/pdf/1608.06993.pdf].\n\nThe primary author, Gao Huang [http://www.gaohuang.net/] has been a Postdoctoral\nFellow at Cornell University an",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.2">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #de54ab;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">DenseNet -Densely Connected Convolutional Networks (CVPR 2017) 📑</h1>
+                <section class="post-meta">
+                    Mukul Khanna -
+                    <time class="post-date" datetime="2019-11-10">10 Nov 2019</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2020/10/1_TeHVqikNc68QC98Vm9M98Q.gif" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>CVPR 2017, Best Paper Award winner</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-anim src="https://cdn-images-1.medium.com/max/800/1*TeHVqikNc68QC98Vm9M98Q.gif" class="kg-image" alt width="735" height="374" layout="responsive"></amp-anim><figcaption>Dense connections</figcaption></figure><blockquote><strong>“Simple models and a lot of data trump more elaborate models based on less data. “ — </strong>Peter Norvig</blockquote><h3 id="about-the-paper">About the paper</h3><p>‘<strong>Densely Connected Convolutional Networks</strong>’ received the <strong>Best Paper Award</strong> at the IEEE Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong>) <strong>2017</strong>. The paper can be read <a href="https://arxiv.org/pdf/1608.06993.pdf" rel="noopener">here</a>.</p><p>The primary author, <a href="http://www.gaohuang.net/" rel="noopener"><strong>Gao Huang</strong></a> has been a Postdoctoral Fellow at Cornell University and is currently working at Tsinghua University as an Assistant Professor. His research focuses on deep learning for computer vision.</p><h3 id="how-i-came-across-the-paper">How I came across the paper?</h3><p>I came across this paper while researching for neural network implementations that were focused on improving image quality (in terms of resolution or dynamic range) by reconstruction. Although this paper demonstrates the prowess of the architecture in image classification, the idea of dense connections has inspired optimisations in many other deep learning domains like image super-resolution, image segmentation, medical diagnosis etc.</p><h3 id="key-contributions-of-the-densenet-architecture">Key contributions of the DenseNet architecture</h3><ul><li>Alleviates <strong>vanishing gradient problem</strong></li><li>Stronger <strong>feature propagation</strong></li><li><strong>Feature reuse</strong></li><li><strong>Reduced parameter</strong> count</li></ul><blockquote><strong>Before you read: </strong><br>Understanding this post requires a basic understanding of deep learning concepts.</blockquote><h3 id="paper-review">Paper review</h3><p>The paper starts with talking about the <strong>vanishing gradient problem — </strong>about how, as networks get deeper, gradients aren’t back-propagated sufficiently to the initial layers of the network. The gradients keep getting smaller as they move backwards into the network and as a result, the initial layers lose their capacity to learn the basic low-level features.</p><p>Several architectures have been developed to solve this problem. These include — ResNets, Highway Networks, Fractal Nets, Stochastic depth networks.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*MwxLN83uT8bgd4nGiR6JZQ.jpeg" class="kg-image" alt width="800" height="406" layout="responsive"></amp-img></figure><p>Regardless of the architectural designs of these networks, they all try to create channels for information to flow between the initial layers and the final layers. DenseNets, with the same objective, create paths between the layers of the network.</p><h3 id="related-works">Related works</h3><ul><li>Highway networks (one of the first attempts at making training easy for deeper models)</li><li>ResNet (Bypassing connections by summation using identity mappings)</li><li>Stochastic depth (dropping layers randomly during training)</li><li>GoogLeNet (inception module — increasing network width)</li><li>FractalNet</li><li>Network in Network (NIN)</li><li>Deeply Supervised Network (DSN)</li><li>Ladder Networks</li><li>Deeply-Fused Nets (DFNs)</li></ul><h3 id="dense-connections">Dense connections</h3><p>Following the feed-forward nature of the network, each layer in a dense block receives feature maps from all the preceding layers, and passes its output to all subsequent layers. Feature maps received from other layers are fused through <strong>concatenation</strong>, and not through summation (like in ResNets).</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*StSq7XyHcuxUOfWuuALkdw.png" class="kg-image" alt width="500" height="300" layout="responsive"></amp-img><figcaption>Concatenation of feature maps</figcaption></figure><p>These connections form a dense circuit of pathways that allow <strong>better gradient-flow</strong>.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-anim src="https://cdn-images-1.medium.com/max/800/1*TeHVqikNc68QC98Vm9M98Q.gif" class="kg-image" alt width="735" height="374" layout="responsive"></amp-anim><figcaption>Dense connections</figcaption></figure><blockquote>Each layer has direct access to the gradients of the loss function and the original input signal.</blockquote><p>Because of these dense connections, the model requires fewer layers, as there is no need to learn redundant feature maps, allowing the <strong>collective knowledge </strong>(features learnt collectively by the network) to be reused. The proposed architecture has narrow layers, which provide state-of-the-art results for as low as 12 channel feature maps. Fewer and narrower layers means that the model has <strong>fewer parameters</strong> to learn, making them easier to train. The authors also talk about the importance of variation in input of layers as a result of concatenated feature maps, which prevents the model from over-fitting the training data.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*04TJTANujOsauo3foe0zbw.jpeg" class="kg-image" alt width="800" height="567" layout="responsive"></amp-img></figure><p>Many variants of the DenseNet model have been presented in the paper. I have opted to explain the concepts with their standard network (DenseNet-121).</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*rkra9kVPl754-vjRGsOqvw.png" class="kg-image" alt width="800" height="368" layout="responsive"></amp-img><figcaption>Some of the variants of the DenseNet architecture</figcaption></figure><h3 id="composite-function">Composite function</h3><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/600/1*qA2rLVBRB-wZoI3nAEMdkA.png" class="kg-image" alt width="266" height="141" layout="fixed"></amp-img><figcaption>Composite function</figcaption></figure><p>*Each CONV block in the network representations in the paper (and in the blog) corresponds to an operation of —</p><p><strong>BatchNorm→ReLU→Conv*</strong></p><h3 id="dense-block">Dense block</h3><p>The concept of dense connections has been portrayed in dense blocks. A dense block comprises <em>n </em>dense layers. These dense layers are connected using a dense circuitry such that each dense layer receives feature maps from all preceding layers and passes it’s feature maps to all subsequent layers. The dimensions of the features (width, height) stay the same in a dense block.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*ZfrliiHwn_L4kKcO61Oxgw.png" class="kg-image" alt width="737" height="274" layout="responsive"></amp-img><figcaption><strong class="markup--strong markup--figure-strong">Dense block (DB) with six Dense Layers (DL)</strong></figcaption></figure><h3 id="dense-layer">Dense layer</h3><p>Each dense-layer consists of 2 convolutional operations -</p><ul><li><strong>1 X 1 CONV </strong>(conventional conv operation for extracting features)</li><li><strong>3 X 3 CONV </strong>(bringing down the feature depth/channel count)</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*cRXqccOxYkZbWpfmyXzjog.png" class="kg-image" alt width="326" height="196" layout="responsive"></amp-img><figcaption><strong class="markup--strong markup--figure-strong">Dense layer of DB-1</strong></figcaption></figure><p>The DenseNet-121 comprises of 6 such dense layers in a dense block. The depth of the output of each dense-layer is equal to the growth rate of the dense block.</p><h3 id="growth-rate-k-">Growth rate (k)</h3><p>This is a term you’ll come across a lot in the paper. It is basically the number of channels output by a dense-layer (<em>1x1 conv → 3x3 conv</em>). The authors have used a value of <em>k = 32</em> for the experiments. This means that the number of features received by a dense layer ( <em>l </em>) from it’s preceding dense layer ( <em>l-1</em> ) is 32. This is referred to as the growth rate because after each layer, 32 channel features are concatenated and fed as input to the next layer.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*NIQenf9KTillNhYfuySfMw.png" class="kg-image" alt width="727" height="274" layout="responsive"></amp-img><figcaption>Dense block with channel count (C) of features entering and exiting the layers</figcaption></figure><h3 id="transition-layer">Transition layer</h3><p>At the end of each dense block, the number of feature-maps accumulates to a value of — <em>input features + (number of dense layers x growth rate). </em>So for 64 channel features entering a dense block of 6 dense-layers of growth rate 32, the number of channels accumulated at the end of the block will be — <br>64 + (6 x 32) = 256. To bring down this channel count, a <strong>transition layer </strong>(or block) is added between two dense blocks. The transition layer consists of -</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/600/1*LoFEV57u5kCjsqZRX7EAKw.png" class="kg-image" alt width="421" height="137" layout="responsive"></amp-img><figcaption><strong class="markup--strong markup--figure-strong">Transition layer/block</strong></figcaption></figure><ul><li><strong>1 X 1 CONV</strong> operation</li><li><strong>2 X 2 AVG POOL </strong>operation</li></ul><p>The <strong>1 X 1 CONV </strong>operation reduces the channel count to half.<br> The <strong>2 X 2 AVG POOL</strong> layer is responsible for downsampling the features in terms of the width and height.</p><h3 id="full-network">Full network</h3><p>As can be seen in the diagram below, the authors have chosen different number of dense layers for each of the three dense block.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*CE11_lfEz00aoOjLiw5sdw.png" class="kg-image" alt width="800" height="213" layout="responsive"></amp-img><figcaption><strong class="markup--strong markup--figure-strong">Full DenseNet architecture</strong></figcaption></figure><h3 id="comparison-with-densenet">Comparison with DenseNet</h3><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/600/1*cXAoIC_ig5R8nE4hKj2OeQ.png" class="kg-image" alt width="600" height="462" layout="responsive"></amp-img><figcaption>ResNet DenseNet comparison</figcaption></figure><p>We can see that even with a reduced parameter count, the DenseNet model has a significantly lower validation error for the ResNet model with the same number of parameters. These experiments were carried out on both the models with hyper-parameters that suited ResNet better. The authors claim that DenseNet would perform better after extensive hyper-parameter searches.</p><blockquote>DenseNet-201 with 20M parameters model yields similar validation error as a 101-layer ResNet with more than 40M parameters.</blockquote><h3 id="inspecting-the-code">Inspecting the code</h3><p>I believe that going through the code makes it easier to understand the implementations of such architectures. Research papers (in the context of Deep Learning) can be difficult to understand because they are more about what drives the design decisions of a neural network. Inspecting the code (usually the network/model code) can reduce this complexity because sometimes it’s just the implementation that we are interested in. Some people prefer first seeing the implementation and then trying to figure out the reasoning behind the design decisions of the network. Regardless, reading the code, before or after, always helps.</p><p>The code of the DenseNet implementation can be found <a href="https://github.com/liuzhuang13/DenseNet" rel="noopener">here</a>. Since I am more comfortable with PyTorch, I’ll try to explain the PyTorch implementation of the model which can be found <a href="https://github.com/gpleiss/efficient_densenet_pytorch" rel="noopener">here</a>. The most important file would be <strong>models/densenet.py</strong>, that hold the network architecture for DenseNet.</p><p>The code has been divided into these classes where each type of block is represented by a class.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*RgsliXFElnLQ5uh5ZCDBAg.png" class="kg-image" alt width="261" height="143" layout="fixed"></amp-img><figcaption>Class hierarchy in code</figcaption></figure><h3 id="dense-layer-1">Dense layer</h3>
+<p>The<strong> _DenseLayer </strong>class can be used to initialise the constituent operations of a dense layer —</p><p><strong>BatchNorm → ReLU → Conv (1X1) → BatchNom → ReLU → Conv (3X3)</strong></p><p>The <strong>_bn_function_factory()</strong> function is responsible for concatenating the output of the previous layers to the current layer.</p><h3 id="denseblock"><strong>DenseBlock</strong></h3><p>The _<strong>DenseBlock </strong>class houses a certain number of <strong>_DenseLayer</strong>s (<em>num_layers</em>).<br>This class is initialised from the <strong>DenseNet </strong>class depending on the number of dense blocks used in the network.</p><h3 id="transition-block">Transition Block</h3><h3 id="densenet"><strong>DenseNet</strong></h3><p>Since this part of the code is a little too big to fit in this blog, I’ll just be using a part of the code that should help in getting the gist of the network.</p><p>I found this image online and it has helped me understand the network better.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*vIZhPImFr9Gjpx6ZB7IOJg.png" class="kg-image" alt="Image result for densenet architecture" width="800" height="430" layout="responsive"></amp-img><figcaption><a href="https://towardsdatascience.com/understanding-and-visualizing-densenets-7f688092391a" data-href="https://towardsdatascience.com/understanding-and-visualizing-densenets-7f688092391a" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">Source</a></figcaption></figure><h3 id="other-works-inspired-from-this-paper">Other works inspired from this paper</h3><ul><li><a href="https://arxiv.org/abs/1802.08797" rel="noopener">Residual Dense Network for Image Super-Resolution</a> (2018)</li></ul><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*6NS5NPZoU3iQXIJOu6jruQ.png" class="kg-image" alt width="800" height="272" layout="responsive"></amp-img></figure><ul><li><a href="http://www.statnlp.org/research/lg/zhijiang_zhangyan19tacl-gcn.pdf" rel="noopener">Densely Connected Graph Convolutional Networks for Graph-to-Sequence Learning</a> (2019)</li></ul><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*pa45Gjp8H1D9NnXJE6Vypw.png" class="kg-image" alt width="651" height="501" layout="responsive"></amp-img></figure><h3 id="conclusion">Conclusion</h3><p>DenseNet is a network that portrays the importance of having dense connections in a network using dense blocks. This helps in feature-reuse, better gradient flow, reduced parameter count and better transmission of features across the network. Such an implementation can help in training deeper networks using less computational resources and with better results.<br></p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>Deep Neural Notebooks</h3>
+            <p>Research, Insights &amp; Stories</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"></rect><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"></path><rect y="34" width="84" height="17" rx="4"></rect><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"></path><rect x="67" width="17" height="17" rx="4"></rect></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

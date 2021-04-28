@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019) 📑</title>
+
+    <link rel="icon" href="../../favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Deep Neural Notebooks">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019) 📑">
+    <meta property="og:description" content="Source: Attention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet)“You just want attention, you don’t want my heart” — Charlie PuthAbout the paperAttention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet) is the current state-of-the-art in HDR image generation using bracketed exposure images. It was presented at CVPR 2019,">
+    <meta property="og:url" content="http://localhost:2368/attention-guided-network-for-ghost-free-high-dynamic-range-imaging-cvpr-2019-paper-review/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta property="article:published_time" content="2019-09-24T04:00:00.000Z">
+    <meta property="article:modified_time" content="2020-10-24T06:02:35.000Z">
+    <meta property="article:tag" content="1k+ views">
+    <meta property="article:tag" content="Paper Review">
+    <meta property="article:tag" content="HDR">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019) 📑">
+    <meta name="twitter:description" content="Source: Attention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet)“You just want attention, you don’t want my heart” — Charlie PuthAbout the paperAttention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet) is the current state-of-the-art in HDR image generation using bracketed exposure images. It was presented at CVPR 2019,">
+    <meta name="twitter:url" content="http://localhost:2368/attention-guided-network-for-ghost-free-high-dynamic-range-imaging-cvpr-2019-paper-review/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="1k+ views, Paper Review, HDR">
+    <meta name="twitter:site" content="@mkulkhanna">
+    <meta name="twitter:creator" content="@mkulkhanna">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="2800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deep Neural Notebooks",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Mukul Khanna",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
+            "width": 2000,
+            "height": 1981
+        },
+        "url": "http://localhost:2368/author/mukul/",
+        "sameAs": [
+            "http://mukulkhanna.co",
+            "https://twitter.com/mkulkhanna"
+        ]
+    },
+    "headline": "Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019) 📑",
+    "url": "http://localhost:2368/attention-guided-network-for-ghost-free-high-dynamic-range-imaging-cvpr-2019-paper-review/",
+    "datePublished": "2019-09-24T04:00:00.000Z",
+    "dateModified": "2020-10-24T06:02:35.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 2800
+    },
+    "keywords": "1k+ views, Paper Review, HDR",
+    "description": "Source: Attention-guided Network for Ghost-free High Dynamic Range Imaging\n(AHDRNet) [https://donggong1.github.io/ahdr]&gt; “You just want attention, you don’t\nwant my heart” — Charlie Puth\nAbout the paper\nAttention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet) is\nthe current state-of-the-art in HDR image generation using bracketed exposure\nimages. It was presented at CVPR 2019, and can be read here\n[https://arxiv.org/abs/1904.10293]. The primary author, Dong Gong\n[https://dong",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.2">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #de54ab;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Attention-guided Network for Ghost-free High Dynamic Range Imaging (CVPR 2019) 📑</h1>
+                <section class="post-meta">
+                    Mukul Khanna -
+                    <time class="post-date" datetime="2019-09-24">24 Sep 2019</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1549545931-59bf067af9ab?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/1200/0*XQTvMhuOvww-TJ8X.jpg" class="kg-image" alt width="1200" height="469" layout="responsive"></amp-img><figcaption>Source: <a href="https://donggong1.github.io/ahdr" data-href="https://donggong1.github.io/ahdr" class="markup--anchor markup--figure-anchor" rel="noopener" target="_blank">Attention-guided Network for Ghost-free High Dynamic Range Imaging (AHDRNet)</a></figcaption></figure><blockquote><em>“You just want attention, you don’t want my heart” — Charlie Puth</em></blockquote><h3 id="about-the-paper">About the paper</h3><p><em>Attention-guided Network for Ghost-free High Dynamic Range Imaging</em> (AHDRNet) is the current state-of-the-art in HDR image generation using bracketed exposure images. It was presented at CVPR 2019, and can be read <a href="https://arxiv.org/abs/1904.10293" rel="noopener">here</a>. The primary author, <a href="https://donggong1.github.io/" rel="noopener">Dong Gong</a> is a Postdoctoral researcher at The University of Adelaide. His interests include machine learning and optimization in Computer Vision.</p><blockquote><strong><em>Note</em></strong><em>: Image results, network representations, formulas and tables used in this blog post have all been sourced from the </em><a href="https://arxiv.org/abs/1904.10293" rel="noopener"><em>paper</em></a><em>.</em></blockquote><h3 id="el-problema">El problema</h3><p>For generation of an HDR image from multi-exposure bracketed LDR images, alignment of the LDR images is very important for dynamic scenes with in-frame motion. Misalignments not accounted for before merging causing ghosting (among other) artifacts. There have been several successful (almost) attempts at compensating this motion between frames by using Optical flow estimation. As it turns out, the shortcomings of flow based methods have not served the HDR cause well.</p><p>This can be seen in an attempt by <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>, where regardless of the accurate spatial reconstruction in saturated image regions, alignment artifacts can be observed for input frames with severe motion. This can be seen in the results provided by the authors of AHDRNet in the image below. Another attempt at HDR reconstruction that targets specifically at highly dynamic LDR bracketed input (<a href="https://arxiv.org/pdf/1711.08937.pdf" rel="noopener">Wu et. al</a>) claims to exploit the apparent prowess of CNN architectures in learning misalignments and compensating for the ghosting artifacts. Results presented below however show that there is scope for improvement.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*30oeBm3mjtt2UsDCSqu0gA.png" class="kg-image" alt width="800" height="320" layout="responsive"></amp-img></figure><h3 id="attention-to-the-rescue">Attention to the rescue</h3><p>The authors propose to use attention mechanisms to solve this bi-faceted problem of reduction of alignment artifacts + accurate HDR reconstruction by using attention mechanisms. If you think about it, attention networks are just a very few Conv layers stacked together, followed (usually) by a sigmoid activation that allows the networks to focus on what’s important and pertinent to the application.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/1*kOhxdmePmBQfgrhhKMiwwA.png" class="kg-image" alt width="383" height="288" layout="responsive"></amp-img></figure><p>Here, the attention networks are utilised to suppress the alignment artifacts and to focus on infusing out better-exposed image regions into the generated image by attending to the spatial dynamics of the bracketed images with respect to the reference image. Regions which correspond to the reference image are highlighted, whereas regions with severe motion and saturation are suppressed. We’ll see how the attention information matrix is processed and implemented, in terms of the mathematics behind it, in some time.</p><p>The attention part of the network focuses on making decisions about which image regions contribute better to the accuracy of the network output. This is followed by a merge network that based on the attention output, tries to create HDR content from the LDR input. The better the attention mechanism, the better is the input to the merge network, thus allowing it to utilise information in the more relevant parts of the input. The merge network has been developed using dilated dense residual blocks that improve gradient-flow, hierarchical learning and convergence. The whole network is trained in an end-to-end fashion and therefore both subnetworks mutually influence each other, and learn together.</p><h3 id="implementation">Implementation</h3><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*IJfbHMvhiFWC5yQe6PCxxg.jpeg" class="kg-image" alt width="800" height="272" layout="responsive"></amp-img><figcaption>Overview</figcaption></figure><h4 id="preprocessing">Preprocessing</h4><p>The non-linear LDR input (<em>I1, I2 , I3</em>) is transferred to the linear domain by applying an inverse CRF (gamma correction here) and dividing by their corresponding exposure times.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*iy2Do0TiEa70L4ZZOrUU1A.png" class="kg-image" alt width="481" height="118" layout="responsive"></amp-img><figcaption>γ = 2.2</figcaption></figure><p>Both the linear and non-linear input (<em>Ii, Hi</em>) are concatenated along the channel dimensions to form <em>Xi</em>. <em>X1</em> , <em>X2</em> and <em>X3</em> are fed to the network to generate the corresponding HDR output.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*MgAQuh0sfypm-2aEUM0g6A.png" class="kg-image" alt width="426" height="99" layout="responsive"></amp-img><figcaption><em class="markup--em markup--figure-em">H</em> is the generated image, <em class="markup--em markup--figure-em">f</em> (.) represents the AHDRNet network and <em class="markup--em markup--figure-em">θ</em> the network parameters</figcaption></figure><p>The network performs better when it has the linearised input information at its disposal. This has been observed and utilised in <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a> as well as <a href="https://arxiv.org/pdf/1711.08937.pdf" rel="noopener">Wu et. al</a>.</p><h3 id="architecture">Architecture</h3><p>The whole network comprises of two sub-networks — attention network and merging network.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/1*FHnHzLbQz58BHcRMFhOd1w.jpeg" class="kg-image" alt width="800" height="436" layout="responsive"></amp-img><figcaption>Attention network</figcaption></figure><p>The attention network, as discussed above helps in avoiding alignment artifacts by highlighting and using information from regions in the neighbouring images (non-reference images) that correspond to the reference image. It does so in the following way.</p><p>Attention is not extracted from and applied directly to the concatenated image pairs. First the <em>Xi</em> s are passed through a Conv layer to extract a 64 channel feature map <em>Zi</em>.</p><p>Then, the reference feature map (<em>Z2</em> or <em>Zr</em>) along with a neighbouring image feature map (<em>Z1</em> and <em>Z3</em>) is fed into the attention module that generates an attention map to mark the important regions in the non-reference feature map with reference to <em>Zr</em>.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*TeylpymAABwM2B6X.png" class="kg-image" alt width="427" height="89" layout="responsive"></amp-img></figure><p>This is done for both the pairs — (<em>Z1</em> , <em>Z2</em>) and (<em>Z3</em> , <em>Z2</em>). This can be seen clearly in the above network representation.</p><p>Before we get into what the attention module does, let’s see what to do with the attention map that is generated. The attention map generated is essentially a 64-channel matrix that contains values between [0,1]. This matrix serves as a kind of a weight-matrix, in which each element represents the importance of a corresponding element in the feature matrix of the neighbour image, with reference to <em>Z2</em>. This is implemented by using the attention map generated from (<em>Z1</em> , <em>Z2</em>) by doing an element wise multiplication of the attention map and <em>Z1</em> to get <em>Z’1</em>.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*AyY92BJFOzyEAatL.png" class="kg-image" alt width="426" height="87" layout="responsive"></amp-img></figure><p>This operation results in important features (where attention is closer to 1) in <em>Z1</em> getting higher numerical values and correspondingly lower values for less important features. This manifests in only important image regions from <em>Z1</em> going ahead in the network to contribute to the final HDR output. The same thing happens between (<em>Z3</em> , <em>Z2</em>) to get <em>Z’3</em>.</p><p>Now that we have all the input pieces most relevant to construct the HDR image, we concatenate these along the channel dimension as below -</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*oulHopStLvaePUth.png" class="kg-image" alt width="451" height="89" layout="responsive"></amp-img></figure><h4 id="attention-module">Attention module</h4><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*VJ5ooOqafNOC5v7O.png" class="kg-image" alt width="687" height="206" layout="responsive"></amp-img></figure><p>Let’s see how these attention maps are generated. The attention module used in this paper comprises of 2 Conv2d layers that output a 64-channel matrix, followed by a ReLU and a sigmoid activation respectively. It takes as input a concatenated feature vector of neighbouring and reference image (2 x 3 = 6 channels). The sigmoid activation, in the end, is used to contain the output in a [0,1] range.</p><h4 id="attention-results">Attention results</h4><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/0*op6pjaA5-eo-eecZ.jpg" class="kg-image" alt width="800" height="500" layout="responsive"></amp-img><figcaption>Attention map examples from the paper. ( a ) to ( c )— Alignment attention; ( d ) to ( f ) — Exposure attention</figcaption></figure><p>In ( a ) to ( c ), it can be observed from the results above how regions with motion discrepancies in non-reference images are suppressed (darker blue region) whereas regions that have correspondances with the reference image are highlighted (brighter blue-ish green). In ( d ) to ( f ), the regions that are better exposed in the neighbouring frames are highlighted and saturated regions are suppressed.</p><h3 id="merging-network">Merging network</h3><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*nq0yC0HIakfLZcdZ.jpg" class="kg-image" alt width="800" height="211" layout="responsive"></amp-img></figure><p>The concatenated feature map (<em>Zs</em>) is given as input to the merging network. The merging network used by the authors is the residual dense network proposed in <a href="https://arxiv.org/abs/1802.08797" rel="noopener">Zhang et. al</a>. Instead of the conventional Conv operations, the authors have used dilated convolutions to propagate a larger receptive field, thus calling it a Dilated Residual Dense Block (DRDB). There are 3 such blocks in the merging network that consist of dense concatenation based skip-connections and residual connections that have been proved quite effective for CNNs in solving gradient vanishing, allowing better backpropagation, hierarchical learning and therefore aiding and improving convergence performance. In the proposed AHDRNet network, each DRDB consists of 6 Conv layers and a growth rate of 32.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/0*1ZrNm30PPxTHo9Iw.png" class="kg-image" alt width="800" height="289" layout="responsive"></amp-img><figcaption>DRDB</figcaption></figure><p>The authors have also employed local and global residual skip connections that bypass low level features to higher level ones. Local residual learning is implemented within the DRDBs whereas global residual learning is for transferring the shallow feature maps containing <em>pure</em> information from the reference image to the latter stages. This, and other network specifications can be observed in the merging network diagram.</p><h3 id="loss-functions">Loss functions</h3><p>Just like <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>, the loss is calculated between <em>μ</em>-law tonemapped generated and tonemapped ground truth images. <em>μ</em> has been set to 5000 for all the experiments. The <em>μ</em>-law can be defined as -</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/0*W_ebdoq-1Dus37Gi.png" class="kg-image" alt width="391" height="137" layout="responsive"></amp-img><figcaption><em class="markup--em markup--figure-em">μ</em>-law</figcaption></figure><p>An L1 loss has been used for the same. Quantitative comparisons PSNR and HDR-VDP-2 scores presented in the paper convey that L1 loss is better at reconstructing finer details as compared to an L2 loss.</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*In81bfClnA_qHrlV.png" class="kg-image" alt width="394" height="96" layout="responsive"></amp-img></figure><h4 id="implementation-specifications">Implementation specifications</h4><p>The architecture was implemented using PyTorch. The specifications and hyper-parameters are -</p><ul><li>Weight initialisation: Xavier</li><li>Optimizer: ADAM</li><li>Learning rate: 1 x 10–5</li><li>Batch size: 8</li><li>GPU: NVIDIA GeForce 1080 Ti</li><li>Inference time for 1 image (1500x1000): 0.32 sec</li></ul><h4 id="results">Results</h4><p>The networks were trained and tested on the datasets provided by <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>. The authors have provided quantitative and qualitative comparisons between several variants of the network, in terms of PSNR and HDR-VDP-2 scores.</p><ul><li>AHDRNet — The full model of the AHDRNet.</li><li>DRDB-Net (i.e. AHDRNet w/o attention)</li><li>A-RDB-Net (i.e. AHDRNet w/o dilation)</li><li>RDB-Net (i.e. AHDRNet w/o attention and dilation)</li><li>RB-Net (i.e. AHDRNet w/o attention, dilation and dense connections). DRDBs replaced by RBs.</li><li>Deep-RB-Net. More RBs are used.</li></ul><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*EUnWQxWutnMEJg6i.png" class="kg-image" alt width="667" height="318" layout="responsive"></amp-img></figure><p>The results show how each component of the AHDRNet is important to the efficacy of the whole network i.e. attention is important, dilated convolutions are important, dense connections are important and residual learning is important.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://cdn-images-1.medium.com/max/800/0*WC-uKJVWhFLumxbb.png" class="kg-image" alt width="662" height="244" layout="responsive"></amp-img><figcaption>Visual results, from the paper</figcaption></figure><p>Comparison with state-of-the-art</p><p>Comparisons with current state-of-the-art approaches (learning based and non-learning based) reveal how AHDRNet beats existing approaches. The closest competitor is obviously <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Kalantari et. al</a>’s implementation that comes only second to AHDRNet. The authors have also provided the results of a variant of AHDRNet that uses Optical-flow aligned images (AHDRNet + OF).</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*iWVJeN5urpZVz9Ka.png" class="kg-image" alt width="800" height="374" layout="responsive"></amp-img></figure><p>The visual results show the efficacy of the network in infusing meticulous details in the generated HDR output without giving rise to any alignment artifacts even in cases of severe motion. Here are some of the results, taken from the paper -</p><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*muRv_BXdBEHgJOxd.jpg" class="kg-image" alt width="800" height="529" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="https://cdn-images-1.medium.com/max/800/0*H1TAnwS6l0whMraX.png" class="kg-image" alt width="800" height="565" layout="responsive"></amp-img></figure><h3 id="conclusion">Conclusion</h3><p>AHDRNet is the first attention-based approach to solving the problem of HDR image generation. The finesse of attention mechanisms has been utilised to align the input LDR images. Previous attempts at image alignment have used Optical flow-based methods, which have some inaccuracies and do not perform well for severe motion between frames. An attention-based approach however performs exceedingly well in terms of HDR reconstruction as well as in removing alignment artifacts. Extensive experiment reveal how AHDRNet supersedes existing approaches qualitatively and quantitatively, and that it has become the new state-of-the-art in HDR image generation.</p><h3 id="references">References</h3><ul><li>Qingsen Yan, Dong Gong, Qinfeng Shi, Anton van den Hengel, Chunhua Shen, Ian Reid, Yanning Zhang, <a href="https://arxiv.org/abs/1904.10293" rel="noopener">Attention-guided Network for Ghost-free High Dynamic Range Imaging</a> (2019), CVPR 2019</li><li>N. K. Kalantari and R. Ramamoorthi, <a href="https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/" rel="noopener">Deep high dynamic rangeimaging of dynamic scenes</a> (2017), ACM Trans. Graph</li><li>Shangzhe Wu, Jiarui Xu, Yu-Wing Tai, and Chi-Keung Tang, <a href="https://arxiv.org/abs/1711.08937" rel="noopener">Deep high dynamic range imaging with large foreground motions</a> (2018), European Conference on Computer Vision (ECCV), September 2018</li></ul>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>Deep Neural Notebooks</h3>
+            <p>Research, Insights &amp; Stories</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"></rect><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"></path><rect y="34" width="84" height="17" rx="4"></rect><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"></path><rect x="67" width="17" height="17" rx="4"></rect></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

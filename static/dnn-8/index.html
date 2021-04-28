@@ -8,69 +8,103 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preload" href="../assets/css/app.css?v=9b37918d46" as="style">
+    <link rel="preload" href="../assets/js/manifest.js?v=9b37918d46" as="script">
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js?v=9b37918d46" as="script">
+    <link rel="preload" href="../assets/js/vendor.js?v=9b37918d46" as="script">
+    <link rel="preload" href="../assets/js/app.js?v=9b37918d46" as="script">
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css?v=9b37918d46" as="style">
+  <link rel="preload" href="../assets/js/post.js?v=9b37918d46" as="script">
+
+
     <style>
-      /* This font-face is here to make icons work if the Ghost instance is installed in a subdirectory */
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff2?v=9b37918d46") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-regular.woff?v=9b37918d46") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff2?v=9b37918d46") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-600.woff?v=9b37918d46") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff2?v=9b37918d46") format('woff2'),
+            url("../assets/fonts/source-sans-pro/source-sans-pro-700.woff?v=9b37918d46") format('woff');
+      }
+
+      /* iconmoon */
       @font-face {
         font-family: 'icomoon';
-        src: url("/assets/fonts/icomoon.eot?vukg2s?v=e75a306f06");
-        src: url("/assets/fonts/icomoon.eot?vukg2s#iefix?v=e75a306f06") format('embedded-opentype'),
-        url("/assets/fonts/icomoon.ttf?vukg2s?v=e75a306f06") format('truetype'),
-        url("/assets/fonts/icomoon.woff?vukg2s?v=e75a306f06") format('woff'),
-        url("/assets/fonts/icomoon.svg?vukg2s#icomoon?v=e75a306f06") format('svg');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo?v=9b37918d46");
+        src: url("../assets/fonts/icomoon/icomoon.eot?aoz2mo") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf?aoz2mo?v=9b37918d46") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff?aoz2mo?v=9b37918d46") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg?aoz2mo") format('svg');
       }
     </style>
-    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=e75a306f06" media="screen">
 
-      <style>
-    .m-hero__picture {
-      background-image: url(/content/images/size/w2000/2020/07/Podcast-thumbnails.009.jpeg);
-    }
-  
-    @media(max-width: 1000px) {
-      .m-hero__picture {
-        background-image: url(/content/images/size/w1000/2020/07/Podcast-thumbnails.009.jpeg);
-      }
-    }
-  
-    @media(max-width: 600px) {
-      .m-hero__picture {
-        background-image: url(/content/images/size/w600/2020/07/Podcast-thumbnails.009.jpeg);
-      }
-    }
-  </style>
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=9b37918d46" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css?v=9b37918d46" media="screen">
 
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="canonical" href="mukulkhanna.github.io/dnn-8/">
+    
+
+    <link rel="icon" href="../favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="mukulkhanna.github.io/dnn-8/amp/">
+    <link rel="amphtml" href="amp/index.html">
     
     <meta property="og:site_name" content="Deep Neural Notebooks">
     <meta property="og:type" content="article">
     <meta property="og:title" content="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
-    <meta property="og:description" content="In this episode, I interview Varun Jampani, who is a Research Scientist at Google Research. You might recognise him from the renowned Super SloMo paper. His work lies at the intersection of Computer Vision and Machine Learning. His main focus is to leverage machine learning techniques for better inference in">
-    <meta property="og:url" content="mukulkhanna.github.io/dnn-8/">
-    <meta property="og:image" content="mukulkhanna.github.io/content/images/2020/07/Podcast-thumbnails.009.jpeg">
+    <meta property="og:description" content="AboutIn this episode, I interview Varun Jampani, who is a Research Scientist at Google Research. You might recognise him from the renowned Super SloMo paper. His work lies at the intersection of Computer Vision and Machine Learning. His main focus is to leverage machine learning techniques for better inference in">
+    <meta property="og:url" content="http://localhost:2368/dnn-8/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/10/Podcast-thumbnails-2.008.jpeg">
     <meta property="article:published_time" content="2020-06-02T12:22:00.000Z">
-    <meta property="article:modified_time" content="2020-07-03T16:00:21.000Z">
+    <meta property="article:modified_time" content="2020-10-24T03:44:02.000Z">
     <meta property="article:tag" content="Computer Vision">
     <meta property="article:tag" content="Deep Learning">
     <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Podcast">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
-    <meta name="twitter:description" content="In this episode, I interview Varun Jampani, who is a Research Scientist at Google Research. You might recognise him from the renowned Super SloMo paper. His work lies at the intersection of Computer Vision and Machine Learning. His main focus is to leverage machine learning techniques for better inference in">
-    <meta name="twitter:url" content="mukulkhanna.github.io/dnn-8/">
-    <meta name="twitter:image" content="mukulkhanna.github.io/content/images/2020/07/Podcast-thumbnails.009.jpeg">
+    <meta name="twitter:description" content="AboutIn this episode, I interview Varun Jampani, who is a Research Scientist at Google Research. You might recognise him from the renowned Super SloMo paper. His work lies at the intersection of Computer Vision and Machine Learning. His main focus is to leverage machine learning techniques for better inference in">
+    <meta name="twitter:url" content="http://localhost:2368/dnn-8/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/10/Podcast-thumbnails-2.008.jpeg">
     <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="Mukul Khanna">
+    <meta name="twitter:data1" content="Deep Neural Notebooks">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="Computer Vision, Deep Learning, Machine Learning">
+    <meta name="twitter:data2" content="Computer Vision, Deep Learning, Machine Learning, Podcast">
     <meta name="twitter:site" content="@mkulkhanna">
-    <meta name="twitter:creator" content="@mkulkhanna">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="720">
     
@@ -81,87 +115,169 @@
     "publisher": {
         "@type": "Organization",
         "name": "Deep Neural Notebooks",
-        "url": "mukulkhanna.github.io/",
+        "url": "http://localhost:2368/",
         "logo": {
             "@type": "ImageObject",
-            "url": "mukulkhanna.github.io/favicon.ico",
-            "width": 48,
-            "height": 48
+            "url": "http://localhost:2368/content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png",
+            "width": 60,
+            "height": 60
         }
     },
     "author": {
         "@type": "Person",
-        "name": "Mukul Khanna",
+        "name": "Deep Neural Notebooks",
         "image": {
             "@type": "ImageObject",
-            "url": "mukulkhanna.github.io/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG",
-            "width": 2000,
-            "height": 1981
+            "url": "http://localhost:2368/content/images/2020/10/LOGO.001-1.png",
+            "width": 330,
+            "height": 329
         },
-        "url": "mukulkhanna.github.io/author/mukul/",
-        "sameAs": [
-            "//mukulkhanna.co",
-            "https://twitter.com/mkulkhanna"
-        ]
+        "url": "http://localhost:2368/author/deep-neural-notebooks/",
+        "sameAs": []
     },
     "headline": "DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani",
-    "url": "mukulkhanna.github.io/dnn-8/",
+    "url": "http://localhost:2368/dnn-8/",
     "datePublished": "2020-06-02T12:22:00.000Z",
-    "dateModified": "2020-07-03T16:00:21.000Z",
+    "dateModified": "2020-10-24T03:44:02.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "mukulkhanna.github.io/content/images/2020/07/Podcast-thumbnails.009.jpeg",
+        "url": "http://localhost:2368/content/images/2020/10/Podcast-thumbnails-2.008.jpeg",
         "width": 1280,
         "height": 720
     },
-    "keywords": "Computer Vision, Deep Learning, Machine Learning",
-    "description": "In this episode, I interview Varun Jampani, who is a Research Scientist at\nGoogle Research. You might recognise him from the renowned Super SloMo paper.\nHis work lies at the intersection of Computer Vision and Machine Learning. His\nmain focus is to leverage machine learning techniques for better inference in\ncomputer vision models.\n\nPrior to joining Google, he was a research scientist at NVIDIA.He completed his\nPhD at the Max-Planck Institute (MPI) for Intelligent Systems. He is also a IIIT\nHyde",
+    "keywords": "Computer Vision, Deep Learning, Machine Learning, Podcast",
+    "description": "About\nIn this episode, I interview Varun Jampani\n[http://localhost:2368/dnn-8/varunjampani.github.io], who is a Research Scientist at \nGoogle Research. You might recognise him from the renowned Super SloMo paper.\nHis work lies at the intersection of Computer Vision and Machine Learning. His\nmain focus is to leverage machine learning techniques for better inference in\ncomputer vision models.\n\nPrior to joining Google, he was a research scientist at NVIDIA.He completed his\nPhD at the Max-Planck Ins",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "mukulkhanna.github.io/"
+        "@id": "http://localhost:2368/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.21">
-    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="mukulkhanna.github.io/rss/">
+    <meta name="generator" content="Ghost 4.2">
+    <link rel="alternate" type="application/rss+xml" title="Deep Neural Notebooks" href="../rss/index.html">
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="http://localhost:2368/"></script><style> .gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script>
+  const ghostSearchApiKey = 'efff2b0d00118a51535099c413'
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1H8F4BQ5WV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1H8F4BQ5WV');
+</script>
+
+<!-- prism.js -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css">
+
+<style>
+  pre[class*="language-"] {
+    margin: 0 0 1.5em !important;
+  }
+  code {
+    text-shadow: none !important;
+  }
+  .token.operator {
+    background: none !important;
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #20262E !important;
+  }
+
+</style>
+<style>:root {--ghost-accent-color: #de54ab;}</style>
 
     <script>
       // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
-      const ghostHost = "mukulkhanna.github.io"
-      // @license-end
-    </script>
-
-    <script>
-      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
-      WebFontConfig = {
-        google: { families: ['Source+Sans+Pro:400,600,700&display=swap'] }
-      };
-
-      (function (d) {
-        var wf = d.createElement('script'), s = d.scripts[0];
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-        wf.async = true;
-        s.parentNode.insertBefore(wf, s);
-      })(document);
+      const ghostHost = "http://localhost:2368"
       // @license-end
     </script>
   </head>
-  <body class="post-template tag-computer-vision tag-deep-learning tag-machine-learning">
+  <body class="post-template tag-computer-vision tag-deep-learning tag-machine-learning tag-podcast">
     
 
-<div class="main-wrap">
-    
+
+
+  
 <header class="m-header with-picture js-header">
   <div class="m-mobile-topbar" data-aos="fade-down">
     <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
-      <span class="icon-menu"></span>
+      <span class="icon-menu" aria-hidden="true"></span>
     </button>
-      <a href="mukulkhanna.github.io" class="m-site-name in-mobile-topbar">
-        Deep Neural Notebooks
+      <a href="../index.html" class="m-logo in-mobile-topbar">
+        <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
       </a>
     <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
-      <span class="icon-search"></span>
+      <span class="icon-search" aria-hidden="true"></span>
     </button>
   </div>
 
@@ -171,131 +287,43 @@
     </button>
     <div class="m-menu__main" data-aos="fade-down">
       <div class="l-wrapper">
-        <div class="m-nav">
-          <nav class="m-nav__left">
-            <ul role="submenu">
-                <li class="only-desktop" role="menuitem">
-                  <a href="mukulkhanna.github.io" class="m-site-name in-desktop-menu">
-                    Deep Neural Notebooks
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-logo">
+                    <img src="../content/images/2020/07/imageonline-co-whitebackgroundremoved-2.png" alt="Deep Neural Notebooks">
                   </a>
                 </li>
                 
-    <li class="nav-podcast" role="menuitem">
-      <a href="mukulkhanna.github.io/">Podcast</a>
+    <li class="nav-mukul-khanna">
+      <a href="../about/index.html">Mukul Khanna</a>
     </li>
-    <li class="nav-youtube" role="menuitem">
-      <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg">Youtube</a>
+    <li class="nav-podcast">
+      <a href="../index.html">podcast</a>
     </li>
-    <li class="nav-about" role="menuitem">
-      <a href="mukulkhanna.github.io/about-me/">About</a>
+    <li class="nav-blog">
+      <a href="../author/mukul/index.html">blog</a>
+    </li>
+    <li class="nav-youtube">
+      <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg">youtube</a>
     </li>
 
-              <li role="menuitem" class="js-submenu-option">
-                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Toggle submenu">
-                  <span class="icon-more"></span>
-                </button>
-                <div class="m-submenu js-submenu">
-                  <div class="l-wrapper in-submenu">
-                    <section class="m-recent-articles">
-                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
-                          <div class="glide js-recent-slider">
-                            <div class="glide__track" data-glide-el="track">
-                              <div class="glide__slides">
-                                <div class="glide__slide">
-                                  <a href="/dnn-9-computer-vision-machine-learning-inside-the-car/" class="m-recent-article">
-                                    <div class="m-recent-article__picture ">
-                                        <img src="/content/images/size/w300/2020/07/Podcast-thumbnails.010.jpeg" loading="lazy" alt="">
-                                    </div>
-                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 9: Computer Vision &amp; ML Inside The Car, NVIDIA's AI Co-Pilot // Shalini De Mello">
-                                      DNN 9: Computer Vision &amp; ML Inside The Car, NVIDIA's AI Co-Pilot // Shalini De Mello
-                                    </h3>
-                                    <span class="m-recent-article__date">2 hours ago</span>
-                                  </a>
-                                </div>
-                                <div class="glide__slide">
-                                  <a href="/dnn-8/" class="m-recent-article">
-                                    <div class="m-recent-article__picture ">
-                                        <img src="/content/images/size/w300/2020/07/Podcast-thumbnails.009.jpeg" loading="lazy" alt="">
-                                    </div>
-                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani">
-                                      DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani
-                                    </h3>
-                                    <span class="m-recent-article__date">a month ago</span>
-                                  </a>
-                                </div>
-                                <div class="glide__slide">
-                                  <a href="/dnn-7-reinforcement-learning-waymo-shimon-whiteson/" class="m-recent-article">
-                                    <div class="m-recent-article__picture ">
-                                        <img src="/content/images/size/w300/2020/07/Podcast-thumbnails.008.jpeg" loading="lazy" alt="">
-                                    </div>
-                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 7: Reinforcement Learning, Waymo // Shimon Whiteson">
-                                      DNN 7: Reinforcement Learning, Waymo // Shimon Whiteson
-                                    </h3>
-                                    <span class="m-recent-article__date">a month ago</span>
-                                  </a>
-                                </div>
-                                <div class="glide__slide">
-                                  <a href="/dnn-6-spirituality-music-the-bhagavad-gita-srinivas-reddy/" class="m-recent-article">
-                                    <div class="m-recent-article__picture ">
-                                        <img src="/content/images/size/w300/2020/07/Podcast-thumbnails.007.jpeg" loading="lazy" alt="">
-                                    </div>
-                                    <h3 class="m-recent-article__title js-recent-article-title" title="DNN 6: Spirituality, Music &amp; The Bhagavad Gita // Srinivas Reddy">
-                                      DNN 6: Spirituality, Music &amp; The Bhagavad Gita // Srinivas Reddy
-                                    </h3>
-                                    <span class="m-recent-article__date">3 months ago</span>
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </section>
-                    <section class="m-tags">
-                      <h3 class="m-submenu-title">Tags</h3>
-                        <ul>
-                            <li>
-                              <a href="/tag/art/">Art</a>
-                            </li>
-                            <li>
-                              <a href="/tag/chatbots/">Chatbots</a>
-                            </li>
-                            <li>
-                              <a href="/tag/computer-vision/">Computer Vision</a>
-                            </li>
-                            <li>
-                              <a href="/tag/creativity/">Creativity</a>
-                            </li>
-                            <li>
-                              <a href="/tag/data-science/">Data Science</a>
-                            </li>
-                            <li>
-                              <a href="/tag/deep-learning/">Deep Learning</a>
-                            </li>
-                            <li>
-                              <a href="/tag/human-computer-interaction/">Human Computer Interaction</a>
-                            </li>
-                            <li>
-                              <a href="/tag/knowledge/">Knowledge</a>
-                            </li>
-                            <li>
-                              <a href="/tag/machine-learning/">Machine Learning</a>
-                            </li>
-                            <li>
-                              <a href="/tag/music/">Music</a>
-                            </li>
-                        </ul>
-                    </section>
-                  </div>
-                </div>
-              </li>
             </ul>
           </nav>
           <div class="m-nav__right">
             <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
-              <span class="icon-search"></span>
+              <span class="icon-search" aria-hidden="true"></span>
             </button>
-            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode">
-              <input type="checkbox" class="js-toggle-darkmode">
-              <div></div>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -304,100 +332,90 @@
   </div>
 
 </header>
-    
 
-  <section class="m-hero with-picture" data-aos="fade">
-    <div class="m-hero__picture in-post"></div>
-    </section>
+<main class="main-wrap" style="margin-top:4%">
+    
   
-  <main>
-    <article>
-      <div class="l-content in-post">
-          <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
-            <div class="l-post-content   js-progress-content">
-              <header class="m-heading">
-                <h1 class="m-heading__title in-post">DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani</h1>
-                <div class="m-heading__meta">
-                    <a href="mukulkhanna.github.io/tag/computer-vision/" class="m-heading__meta__tag">Computer Vision</a>
-                    <span class="m-heading__meta__divider">•</span>
-                  <span class="m-heading__meta__time">Jun 02, 2020</span>
-                </div>
-              </header>
-              <div class="pos-relative js-post-content">
-                <div class="m-share">
-                  <div class="m-share__content js-sticky">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=mukulkhanna.github.io/dnn-8/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
-                      <span class="icon-facebook"></span>
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?text=DNN%208%3A%20Computer%20Vision%20%26%20ML%20Research%2C%20Super%20SloMo%20%2F%2F%20Varun%20Jampani&amp;url=mukulkhanna.github.io/dnn-8/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
-                      <span class="icon-twitter"></span>
-                    </a>
-                    <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
-                      <span class="icon-arrow-top"></span>
-                      <svg>
-                        <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <figure class="kg-card kg-embed-card"><iframe width="100%" height="232" allowtransparency="true" frameborder="0" allow="encrypted-media" title="Spotify Embed: DNN 8: Computer Vision and Machine Learning Research, Super SloMo | Varun Jampani" src="https://open.spotify.com/embed-podcast/episode/2V4omMjSSGADPqmWgQ89DK"></iframe></figure><p>In this episode, I interview Varun Jampani, who is a Research Scientist at Google Research. You might recognise him from the renowned Super SloMo paper. His work lies at the intersection of Computer Vision and Machine Learning. His main focus is to leverage machine learning techniques for better inference in computer vision models.</p><p>Prior to joining Google, he was a research scientist at NVIDIA.He completed his PhD at the Max-Planck Institute (MPI) for Intelligent Systems. He is also a IIIT Hyderabad alum, where he did his Bachelor's and Master's.</p><p>In this episode we talk about his journey — from his Bachelor's and Masters at IIIT Hyderabad to his PhD at MPI, about how his research has shaped over the years, about his focus on always asking good research questions and tackling fundamental problems in Computer Vision as a whole. We also talk about the SuperSloMo paper, about how it started, the key design decisions that were taken and the challenges faced in the process. If there's one thing that you are likely to take away from this conversation, it is the importance of asking good research questions and letting that drive your learning and research.</p>
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
+          <div class="l-post-content  has-subscribe-form js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">DNN 8: Computer Vision &amp; ML Research, Super SloMo // Varun Jampani</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/computer-vision/index.html" class="m-heading__meta__tag">Computer Vision</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">•</span>
+                <span class="m-heading__meta__time">Jun 2, 2020</span>
               </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.youtube.com/playlist?list=PLKsk3K4Z-1AVwIzEi9pk-ayEh9uxdyweL" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Youtube">
+                    <span class="icon-youtube" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://open.spotify.com/show/2eq1jD7V5K19aZUUJnIz5z" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Spotify">
+                    <span class="icon-spotify" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card"><img src="../content/images/2020/10/Screenshot-2020-10-05-at-6.26.55-PM.png" class="kg-image" alt loading="lazy" width="1440" height="781" srcset="../content/images/size/w600/2020/10/Screenshot-2020-10-05-at-6.26.55-PM.png 600w, ../content/images/size/w1000/2020/10/Screenshot-2020-10-05-at-6.26.55-PM.png 1000w, ../content/images/2020/10/Screenshot-2020-10-05-at-6.26.55-PM.png 1440w" sizes="(min-width: 720px) 720px"></figure><h3 id="about">About</h3><p>In this episode, I interview <a href="http://localhost:2368/dnn-8/varunjampani.github.io"><strong>Varun Jampani</strong></a>, who is a Research Scientist at <strong>Google Research</strong>. You might recognise him from the renowned Super SloMo paper. His work lies at the intersection of Computer Vision and Machine Learning. His main focus is to leverage machine learning techniques for better inference in computer vision models.</p><p>Prior to joining Google, he was a research scientist at NVIDIA.He completed his PhD at the Max-Planck Institute (MPI) for Intelligent Systems. He is also a IIIT Hyderabad alum, where he did his Bachelor's and Master's.</p><h3 id="we-talk-about">We talk about</h3><p>In this episode we talk about his journey — from his Bachelor's and Masters at IIIT Hyderabad to his PhD at MPI, about how his research has shaped over the years, about his focus on always asking good research questions and tackling fundamental problems in Computer Vision as a whole. We also talk about the SuperSloMo paper, about how it started, the key design decisions that were taken and the challenges faced in the process. If there's one thing that you are likely to take away from this conversation, it is the importance of asking good research questions and letting that drive your learning and research.</p><figure class="kg-card kg-embed-card"><iframe width="612" height="344" src="https://www.youtube.com/embed/05fGL5jEH5I?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><p>Links: <a href="https://youtu.be/05fGL5jEH5I">Youtube</a> / <a href="https://tinyurl.com/ycudgfse">Anchor.fm</a> / <a href="https://tinyurl.com/y8w7tkhf">Apple Podcasts</a> / <a href="https://tinyurl.com/y7u98d7m">Spotify</a></p>
             </div>
           </div>
-          <section class="m-author">
-            <div class="m-author__content">
-              <div class="m-author__picture">
-                <a href="mukulkhanna.github.io/author/mukul/" class="m-author-picture" aria-label="Author picture">
-                    <div style="background-image: url(mukulkhanna.github.io/content/images/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG);"></div>
-                </a>
-              </div>
-              <div class="m-author__info">
-                <h4 class="m-author__name">
-                  <a href="mukulkhanna.github.io/author/mukul/">Mukul Khanna</a>
-                </h4>
-                  <p class="m-author__bio">Computer Vision Research Intern at Robotics Research Center, IIIT Hyderabad</p>
-                <ul class="m-author-links">
-                    <li>
-                      <a href="//mukulkhanna.co" target="_blank" rel="noopener" aria-label="Website">
-                        <span class="icon-globe"></span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://twitter.com/@mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
-                        <span class="icon-twitter"></span>
-                      </a>
-                    </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-          <section class="m-recommended">
-            <div class="l-wrapper in-recommended">
-              <h3 class="m-section-title in-recommended">Recommended for you</h3>
-              <div class="m-recommended-articles">
-                <div class="m-recommended-slider glide js-recommended-slider">
-                  <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides">
-                      
+        </div>
+        <section class="m-recommended">
+          <div class="l-wrapper in-recommended">
+            <h3 class="m-section-title in-recommended"><b>Recommended for you</b></h3>
+            <div class="m-recommended-articles">
+              <div class="m-recommended-slider glide js-recommended-slider">
+                <div class="glide__track" data-glide-el="track">
+                  <div class="glide__slides">
+                    
     <div class="m-recommended-slider__item glide__slide">
-    <article class="m-article-card post tag-open-source tag-data-science tag-web tag-machine-learning">
+  <article class="m-article-card  post tag-nlp tag-machine-learning tag-chatbots tag-book tag-podcast">
     <div class="m-article-card__picture">
-      <a href="/dnn-3-data-science-on-the-web-mozilla-matplotlib-pyodide-mike-droettboom/" class="m-article-card__picture-link" aria-label="Article"></a>
-        <img class="m-article-card__picture-background" src="/content/images/size/w600/2020/07/Podcast-thumbnails.003.jpeg" loading="lazy" alt="">
-      <a href="mukulkhanna.github.io/author/mukul/" class="m-article-card__author js-tooltip" aria-label="Authors" data-tippy-content="Posted by Mukul Khanna ">
-          <div style="background-image: url(/content/images/size/w100/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG);"></div>
-      </a>
+      <a href="../dnn-10-practical-natural-language-processing-book-nlp-ml-ai-in-the-industry-gpt-3-and-mor/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2020/09/Podcast-thumbnails.002.jpeg" loading="lazy" alt="">
     </div>
       <div class="m-article-card__info">
-        <a href="mukulkhanna.github.io/tag/open-source/" class="m-article-card__tag">Open Source</a>
-      <a href="/dnn-3-data-science-on-the-web-mozilla-matplotlib-pyodide-mike-droettboom/" class="m-article-card__info-link">
+        <a href="../tag/nlp/index.html" class="m-article-card__tag">NLP</a>
+      <a href="../dnn-10-practical-natural-language-processing-book-nlp-ml-ai-in-the-industry-gpt-3-and-mor/index.html" class="m-article-card__info-link" aria-label="DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more">
+            DNN 10: Practical Natural Language Processing Book | NLP, ML &amp; AI in the Industry | GPT-3 and more
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>7 months ago</span>
+          <span>•</span>
+          <span>2 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-open-source tag-data-science tag-web tag-machine-learning tag-podcast">
+    <div class="m-article-card__picture">
+      <a href="../dnn-3-data-science-on-the-web-mozilla-matplotlib-pyodide-mike-droettboom/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2020/10/Podcast-thumbnails-2.003.jpeg" loading="lazy" alt="">
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/open-source/index.html" class="m-article-card__tag">Open Source</a>
+      <a href="../dnn-3-data-science-on-the-web-mozilla-matplotlib-pyodide-mike-droettboom/index.html" class="m-article-card__info-link" aria-label="DNN 3: Data Science on the Web, Mozilla, Matplotlib, Py-odide // Mike Droettboom">
         <div>
           <h2 class="m-article-card__title js-article-card-title " title="DNN 3: Data Science on the Web, Mozilla, Matplotlib, Py-odide // Mike Droettboom">
             DNN 3: Data Science on the Web, Mozilla, Matplotlib, Py-odide // Mike Droettboom
           </h2>
         </div>
         <div class="m-article-card__timestamp">
-          <span>7 months ago</span>
+          <span>a year ago</span>
           <span>•</span>
           <span>1 min read</span>
         </div>
@@ -406,24 +424,21 @@
   </article>
     </div>
     <div class="m-recommended-slider__item glide__slide">
-    <article class="m-article-card post tag-nlp tag-deep-learning tag-chatbots tag-open-source">
+  <article class="m-article-card  post tag-nlp tag-deep-learning tag-chatbots tag-open-source tag-podcast">
     <div class="m-article-card__picture">
-      <a href="/dnn-2-conversational-ai-nlp-huggingface-thomas-wolf/" class="m-article-card__picture-link" aria-label="Article"></a>
-        <img class="m-article-card__picture-background" src="/content/images/size/w600/2020/07/Podcast-thumbnails.002-2.jpeg" loading="lazy" alt="">
-      <a href="mukulkhanna.github.io/author/mukul/" class="m-article-card__author js-tooltip" aria-label="Authors" data-tippy-content="Posted by Mukul Khanna ">
-          <div style="background-image: url(/content/images/size/w100/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG);"></div>
-      </a>
+      <a href="../dnn-2-conversational-ai-nlp-huggingface-thomas-wolf/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2020/10/Podcast-thumbnails-2.002.jpeg" loading="lazy" alt="">
     </div>
       <div class="m-article-card__info">
-        <a href="mukulkhanna.github.io/tag/nlp/" class="m-article-card__tag">NLP</a>
-      <a href="/dnn-2-conversational-ai-nlp-huggingface-thomas-wolf/" class="m-article-card__info-link">
+        <a href="../tag/nlp/index.html" class="m-article-card__tag">NLP</a>
+      <a href="../dnn-2-conversational-ai-nlp-huggingface-thomas-wolf/index.html" class="m-article-card__info-link" aria-label="DNN 2: Conversational AI, NLP &amp; HuggingFace 🤗 // Thomas Wolf">
         <div>
           <h2 class="m-article-card__title js-article-card-title " title="DNN 2: Conversational AI, NLP &amp; HuggingFace 🤗 // Thomas Wolf">
             DNN 2: Conversational AI, NLP &amp; HuggingFace 🤗 // Thomas Wolf
           </h2>
         </div>
         <div class="m-article-card__timestamp">
-          <span>7 months ago</span>
+          <span>a year ago</span>
           <span>•</span>
           <span>1 min read</span>
         </div>
@@ -431,64 +446,40 @@
     </div>
   </article>
     </div>
-    <div class="m-recommended-slider__item glide__slide">
-    <article class="m-article-card post tag-computer-vision tag-machine-learning tag-human-computer-interaction">
-    <div class="m-article-card__picture">
-      <a href="/dnn-9-computer-vision-machine-learning-inside-the-car/" class="m-article-card__picture-link" aria-label="Article"></a>
-        <img class="m-article-card__picture-background" src="/content/images/size/w600/2020/07/Podcast-thumbnails.010.jpeg" loading="lazy" alt="">
-      <a href="mukulkhanna.github.io/author/mukul/" class="m-article-card__author js-tooltip" aria-label="Authors" data-tippy-content="Posted by Mukul Khanna ">
-          <div style="background-image: url(/content/images/size/w100/2020/07/3CA5BB6B-761F-4F3F-8BEC-32E58969F08E-3.JPG);"></div>
-      </a>
-    </div>
-      <div class="m-article-card__info">
-        <a href="mukulkhanna.github.io/tag/computer-vision/" class="m-article-card__tag">Computer Vision</a>
-      <a href="/dnn-9-computer-vision-machine-learning-inside-the-car/" class="m-article-card__info-link">
-        <div>
-          <h2 class="m-article-card__title js-article-card-title " title="DNN 9: Computer Vision &amp; ML Inside The Car, NVIDIA's AI Co-Pilot // Shalini De Mello">
-            DNN 9: Computer Vision &amp; ML Inside The Car, NVIDIA's AI Co-Pilot // Shalini De Mello
-          </h2>
-        </div>
-        <div class="m-article-card__timestamp">
-          <span>2 hours ago</span>
-          <span>•</span>
-          <span>1 min read</span>
-        </div>
-      </a>
-    </div>
-  </article>
-    </div>
-                    </div>
                   </div>
-                  <div data-glide-el="controls" class="glide__arrows js-controls">
-                    <button data-glide-dir="&lt;" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
-                      <span class="icon-arrow-left" aria-hidden="true"></span>
-                    </button>
-                    <button data-glide-dir="&gt;" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
-                      <span class="icon-arrow-right" aria-hidden="true"></span>
-                    </button>
-                  </div>
+                </div>
+                <div data-glide-el="controls" class="glide__arrows js-controls">
+                  <button data-glide-dir="&lt;" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                    <span class="icon-arrow-left" aria-hidden="true"></span>
+                  </button>
+                  <button data-glide-dir="&gt;" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                    <span class="icon-arrow-right" aria-hidden="true"></span>
+                  </button>
                 </div>
               </div>
             </div>
-          </section>
-      </div>
-    </article>
-  </main>
-</div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
 
 
 
     
-<div class="m-search js-search">
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
   <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
-    <span class="icon-close"></span>
+    <span class="icon-close" aria-hidden="true"></span>
   </button>
   <div class="m-search__content">
     <form class="m-search__form">
-      <fieldset>
-        <span class="icon-search m-search-icon"></span>
-        <input type="text" class="m-input in-search js-input-search" placeholder="Type to search" aria-label="Type to search">
-      </fieldset>
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
     </form>
     <div class="js-search-results hide"></div>
     <p class="m-not-found align-center hide js-no-results">
@@ -501,19 +492,22 @@
 <footer class="m-footer">
   <div class="m-footer__content">
     <p class="m-footer-copyright">
-      <span>Deep Neural Notebooks © 2020</span>
+      <span>Mukul Khanna © 2021</span>
       <span>  •  </span>
-      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+      <span>Published w/ <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
     </p>
 
     <nav class="m-footer-social">
-        <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
-          <span class="icon-twitter"></span>
+        <a href="https://www.youtube.com/channel/UC66w1T4oMv66Jn1LR5CW2yg" target="_blank" rel="noopener" aria-label="Youtube">
+          <span class="icon-youtube" aria-hidden="true"></span>
         </a>
+        <a href="https://twitter.com/mkulkhanna" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="http://localhost:2368/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
     </nav>
-    <p class="m-footer-copyright jslicense">
-      <a href="/assets/html/javascript.html?v=e75a306f06" rel="jslicense">JavaScript license information</a>
-    </p>
   </div>
 </footer>
 
@@ -545,14 +539,18 @@
   </button>
 </div>
     <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
-    <script defer src="/assets/js/vendor/content-api.min.js?v=e75a306f06"></script>
-    <script defer src="/assets/js/manifest.js?v=e75a306f06"></script>
-    <script defer src="/assets/js/vendor.js?v=e75a306f06"></script>
-    <script defer src="/assets/js/app.js?v=e75a306f06"></script>
+    <script defer src="../assets/js/manifest.js?v=9b37918d46"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js?v=9b37918d46"></script>
+    <script defer src="../assets/js/vendor.js?v=9b37918d46"></script>
+    <script defer src="../assets/js/app.js?v=9b37918d46"></script>
 
-      <script defer src="/assets/js/post.js?v=e75a306f06"></script>
+      <script defer src="../assets/js/post.js?v=9b37918d46"></script>
 
 
-    
+    <!-- prism.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-javascript.min.js"></script>
   </body>
 </html>
